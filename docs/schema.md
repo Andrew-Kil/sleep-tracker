@@ -9,16 +9,17 @@
 
 ## Sleep Logs
 
-| column name       | data type                   | details                                |
-| ----------------- | --------------------------- | -------------------------------------- |
-| id                | integer                     | SERIAL PRIMARY KEY                     |
-| remember_dream    | boolean                     | NOT NULL                               |
-| sleep_location    | varchar                     | NOT NULL                               |
-| sleep_start       | time [ (p) ] with time zone | NOT NULL                               |
-| sleep_end         | time [ (p) ] with time zone | NOT NULL                               |
-| interrupted_sleep | boolean                     | NOT NULL                               |
-| dream_themes      | integer[]                   | NOT NULL - references dream_themes(id) |
-| notes             | text                        |                                        |
+| column name       | data type | details                                |
+| ----------------- | --------- | -------------------------------------- |
+| id                | integer   | SERIAL PRIMARY KEY                     |
+| user_id           | integer   | INT REFERENCES users(id)               |
+| remember_dream    | boolean   | NOT NULL                               |
+| sleep_location    | varchar   | NOT NULL                               |
+| sleep_start       | time      | NOT NULL                               |
+| sleep_end         | time      | NOT NULL                               |
+| interrupted_sleep | boolean   | NOT NULL                               |
+| dream_themes      | integer[] | NOT NULL - references dream_themes(id) |
+| notes             | text      |                                        |
 
 ## Common Dream Themes
 
