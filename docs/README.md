@@ -21,6 +21,11 @@ This app is designed to track the users sleeping habits & dreams so they can kee
 
 ## Todo
 
-| Task                           | Completed | Priority |
-| :----------------------------- | :-------: | -------: |
-| Add more information to README |    ⬜️    |     High |
+| Task                            | Completed | Priority |
+| :------------------------------ | :-------: | -------: |
+| Add more information to README  |    🚧     |   Medium |
+| Add db schema                   |    ✅     |     High |
+| Add seed.sql                    |    ✅     |     High |
+| Add wireframes/mockups          |    ⬜️    |     High |
+| Add API routes                  |    ⬜️    |     High |
+| Add frontend - create react app |    ⬜️    |     High |
