@@ -27,5 +27,5 @@ This app is designed to track the users sleeping habits & dreams so they can kee
 | Add db schema                   |    ✅     |     High |
 | Add seed.sql                    |    ✅     |     High |
 | Add wireframes/mockups          |    ⬜️    |     High |
-| Add API routes                  |    ⬜️    |     High |
-| Add frontend - create react app |    ⬜️    |     High |
+| Add API routes                  |    ✅     |     High |
+| Add frontend - create react app |    ✅     |     High |
