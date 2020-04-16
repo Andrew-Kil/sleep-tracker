@@ -1,31 +1,33 @@
 {
   "name": "sleep-journal",
   "version": "1.0.0",
-  "description": "Application to track info about sleep & dream patterns",
-  "main": "index.js",
+  "description": "track sleep & dream info",
+  "main": "app.js",
   "directories": {
     "doc": "docs"
   },
+  "dependencies": {
+    "nodemon": "^2.0.3"
+  },
+  "devDependencies": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon app.js && cd client/"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/andrew-kil/sleep-journal.git"
   },
   "keywords": [
+    "track",
     "sleep",
     "dream",
-    "tracker",
     "journal"
   ],
-  "author": "Andrew Kil",
+  "author": "andrew kil",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/andrew-kil/sleep-journal/issues"
   },
-  "homepage": "https://github.com/andrew-kil/sleep-journal#readme",
-  "dependencies": {
-    "nodemon": "^2.0.3"
-  }
+  "homepage": "https://github.com/andrew-kil/sleep-journal#readme"
 }
