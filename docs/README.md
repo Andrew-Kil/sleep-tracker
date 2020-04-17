@@ -1,4 +1,4 @@
-# Sleep Journal 💭
+# Sleep Tracker
 
 This app is designed to track the users sleeping habits & dreams so they can keep track of information including how many hours they slept and what kind of dreams they had. Over time, the user will be better informed about their sleeping patterns as well as any reoccuring themes in their dreams.
 
@@ -23,12 +23,9 @@ This app is designed to track the users sleeping habits & dreams so they can kee
 
 | Task                            | Completed | Priority |
 | :------------------------------ | :-------: | -------: |
-| Add more information to README  |    ⬜️    |     High |
-| Task                            | Completed | Priority |
-| :------------------------------ | :-------: | -------: |
 | Add more information to README  |    🚧     |   Medium |
 | Add db schema                   |    ✅     |     High |
 | Add seed.sql                    |    ✅     |     High |
 | Add wireframes/mockups          |    ⬜️    |     High |
-| Add API routes                  |    ⬜️    |     High |
-| Add frontend - create react app |    ⬜️    |     High |
+| Add API routes                  |    ✅     |     High |
+| Add frontend - create react app |    ✅     |     High |
