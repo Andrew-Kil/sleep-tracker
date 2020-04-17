@@ -18,15 +18,21 @@ CREATE TABLE dream_themes
     info TEXT NOT NULL
 );
 
+-- CREATE TABLE sleep_logs
+-- (
+--     id SERIAL PRIMARY KEY,
+--     user_id INT REFERENCES users(id),
+--     remember_dream BOOLEAN NOT NULL,
+--     sleep_location VARCHAR NOT NULL,
+--     sleep_start TIME NOT NULL,
+--     sleep_end TIME NOT NULL,
+--     interrupted_sleep BOOLEAN NOT NULL,
+--     notes TEXT
+-- );
+
 CREATE TABLE sleep_logs
 (
     id SERIAL PRIMARY KEY,
-    user_id INT REFERENCES users(id),
-    remember_dream BOOLEAN NOT NULL,
-    sleep_location VARCHAR NOT NULL,
-    sleep_start TIME NOT NULL,
-    sleep_end TIME NOT NULL,
-    interrupted_sleep BOOLEAN NOT NULL,
     notes TEXT
 );
 
@@ -43,9 +49,7 @@ INSERT INTO dream_themes
     theme, info
     )
 VALUES
-    (
-        'death', 'a big change or transformation on the horizon, for you or someone close to you'
-    ),
+    ('death', 'a big change or transformation on the horizon, for you or someone close to you'),
     ('falling', 'a lack of control of insecurity in your life. it might alsos represent failure'),
     ('friends', 'your own personality traits that you may not be aware of, or that need exploring'),
     ('sex', 'they are not always about sexual attraction. our subconscious sex partners have qualities that we want for ourselves'),
@@ -58,9 +62,14 @@ VALUES
     ('nakedness', 'vulnerability and exposure in a situation'),
     ('pregnancy', 'growth and/or something new, such as projects, goals, or circumstances');
 
+-- INSERT INTO sleep_logs
+--     (
+--     remember_dream, user_id, sleep_location, sleep_start, sleep_end, interrupted_sleep, notes
+--     )
+-- VALUES
+--     (true, 1, 'bed', '08:00:00', '12:00:00', true, 'ate egg before bed. woke up 3 times. had dream about birds');
+
 INSERT INTO sleep_logs
-    (
-    remember_dream, user_id, sleep_location, sleep_start, sleep_end, interrupted_sleep, notes
-    )
+    (notes)
 VALUES
-    (true, 1, 'bed', '08:00:00', '12:00:00', true, 'ate egg before bed. woke up 3 times. had dream about birds');
+    ('ate egg before bed. woke up 3 times. had dream about birds');
