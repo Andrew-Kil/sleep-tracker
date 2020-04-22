@@ -1,0 +1,23 @@
+{
+  "name": "sleep-tracker",
+  "version": "1.0.0",
+  "description": "sleep tracker app",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "cd server && concurrently \"npm start\" \"cd ../client && npm start\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/andrew-kil/sleep-tracker.git"
+  },
+  "author": "andrew kil",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/andrew-kil/sleep-tracker/issues"
+  },
+  "homepage": "https://github.com/andrew-kil/sleep-tracker#readme"
+}
