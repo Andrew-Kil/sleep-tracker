@@ -21,11 +21,15 @@ This app is designed to track the users sleeping habits & dreams so they can kee
 
 ## Todo
 
-| Task                            | Completed | Priority |
-| :------------------------------ | :-------: | -------: |
-| Add more information to README  |    🚧     |   Medium |
-| Add db schema                   |    ✅     |     High |
-| Add seed.sql                    |    ✅     |     High |
-| Add wireframes/mockups          |    ⬜️    |     High |
-| Add API routes                  |    ✅     |     High |
-| Add frontend - create react app |    ✅     |     High |
+| Task                                  | Completed | Priority |
+| :------------------------------------ | :-------: | -------: |
+| Add more information to README        |    🚧     |   Medium |
+| Add db schema                         |    ✅     |     High |
+| Add seed.sql                          |    ✅     |     High |
+| Add wireframes/mockups                |    ⬜️    |     High |
+| Add API routes                        |    ✅     |     High |
+| Add frontend - create react app       |    ✅     |     High |
+| Create form to add a sleep log        |    🚧     |     High |
+| Display users sleep logs              |    ⬜️    |     High |
+| Allow user to edit their sleep logs   |    ⬜️    |     High |
+| Allow user to delete their sleep logs |    ⬜️    |     High |
