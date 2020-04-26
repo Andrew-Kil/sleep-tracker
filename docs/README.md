@@ -14,27 +14,33 @@ This app is designed to track the users sleeping habits & dreams so they can kee
 
 - [ ] Visualization of hours slept, themes, etc.
 - [ ] Login/Signup
-- [ ] Make posts public/private
 - [ ] Add friends
 - [ ] Comment on entries
 - [ ] User can add tags to entries for reoccuring themes
+- [ ] Give user the option to make their sleep log public or private
 
 ## Todo
 
-| Task                                  | Completed | Priority |
-| :------------------------------------ | :-------: | -------: |
-| Add more information to README        |    🚧     |   Medium |
-| Add db schema                         |    ✅     |     High |
-| Add seed.sql                          |    ✅     |     High |
-| Add wireframes/mockups                |    ⬜️    |   Medium |
-| Add API routes                        |    ✅     |     High |
-| Add frontend - create react app       |    ✅     |     High |
-| Create form to add a sleep log        |    🚧     |     High |
-| Display users sleep logs              |    ✅     |     High |
-| Allow user to edit their sleep logs   |    ⬜️    |     High |
-| Allow user to delete their sleep logs |    ⬜️    |     High |
-| Display dream themes                  |    ✅     |     High |
-| Add styling                           |    ⬜️    |      Low |
-| Add routes for different components   |    ⬜️    |   Medium |
-| Add signup                            |    ⬜️    |     High |
-| Add login                             |    ⬜️    |     High |
+| Task                                                                      | Completed | Priority |
+| :------------------------------------------------------------------------ | :-------: | -------: |
+| Add more information to README                                            |    🚧     |   Medium |
+| Add db schema                                                             |    ✅     |     High |
+| Add seed.sql                                                              |    ✅     |     High |
+| Add wireframes/mockups                                                    |    ⬜️    |   Medium |
+| Add API routes                                                            |    ✅     |     High |
+| Add frontend - create react app                                           |    ✅     |     High |
+| Create form to add a sleep log                                            |    🚧     |     High |
+| Display users sleep logs                                                  |    ✅     |     High |
+| Sleep logs should only be displayed for current user (unless made public) |    ⬜️    |     High |
+| Convert sleep log date to readable format                                 |    ⬜️    |      Low |
+| Convert sleep log sleep start & stop to readable format                   |    ⬜️    |      Low |
+| Replace sleep log user ID with the username                               |    ⬜️    |      Low |
+| Allow user to edit their sleep logs                                       |    ⬜️    |     High |
+| Allow user to delete their sleep logs                                     |    ⬜️    |     High |
+| Display dream themes                                                      |    ✅     |     High |
+| Add styling                                                               |    ⬜️    |      Low |
+| Add routes for different components                                       |    ✅     |   Medium |
+| Setup react-router                                                        |    ✅     |     High |
+| Create NavBar to route to different components                            |    ✅     |     High |
+| Add signup                                                                |    ⬜️    |      Low |
+| Add login                                                                 |    ⬜️    |      Low |
