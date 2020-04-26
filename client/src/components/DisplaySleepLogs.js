@@ -3,6 +3,7 @@ import axios from "axios";
 
 const DisplaySleepLogs = () => {
   const [sleepLogs, setSleepLogs] = useState();
+
   useEffect(() => {
     const fetchData = async () => {
       const result = await axios("http://localhost:5000/sleep-logs");
@@ -10,11 +11,28 @@ const DisplaySleepLogs = () => {
     };
     fetchData();
   }, []);
+
   return (
     <div>
       {sleepLogs &&
-        sleepLogs.data.map((sleepLog) => (
-          <div style={{ marginTop: "20px" }}>{sleepLog.notes}</div>
+        sleepLogs.data.map((sleepLog, i) => (
+          <div style={{ border: "1px solid black", margin: "10px" }} key={i}>
+            <div style={{ marginTop: "20px" }}>user id: {sleepLog.user_id}</div>
+            <div style={{ marginTop: "20px" }}>date: {sleepLog.date}</div>
+            <div style={{ marginTop: "20px" }}>
+              remember dream: {sleepLog.remember_dream}
+            </div>
+            <div style={{ marginTop: "20px" }}>
+              interrupted sleep: {sleepLog.interrupted_sleep}
+            </div>
+            <div style={{ marginTop: "20px" }}>
+              sleep start: {sleepLog.sleep_start}
+            </div>
+            <div style={{ marginTop: "20px" }}>
+              sleep end:{sleepLog.sleep_end}
+            </div>
+            <div style={{ marginTop: "20px" }}>notes: {sleepLog.notes}</div>
+          </div>
         ))}
     </div>
   );
