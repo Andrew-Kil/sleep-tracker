@@ -14,6 +14,7 @@ const DisplaySleepLogs = () => {
 
   return (
     <div>
+      <h2>Sleep Logs</h2>
       {sleepLogs &&
         sleepLogs.data.map((sleepLog, i) => (
           <div style={{ border: "1px solid black", margin: "10px" }} key={i}>

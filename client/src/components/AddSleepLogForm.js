@@ -8,7 +8,9 @@ const AddSleepLogForm = () => {
   const handleChange = (e) =>
     setValues({ ...values, [e.target.name]: e.target.value });
 
-  const handleSubmit = (e) => e.preventDefault();
+  const handleSubmit = (e) => {
+    e.preventDefault();
+  };
 
   useEffect(() => console.log(values));
 
