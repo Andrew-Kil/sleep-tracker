@@ -25,7 +25,10 @@ const getOneSleepLog = (req, res, next) => {
 };
 
 const createSleepLog = (req, res, next) => {
-  db.none("INSERT INTO sleep_logs(notes) VALUES(${notes})", req.body)
+  db.none(
+    "INSERT INTO sleep_logs(user_id, sleep_log_date, remember_dream, interrupted_sleep, sleep_start, sleep_end, notes) VALUES(${notes})",
+    req.body
+  )
     .then(() => {
       res.status(200).json({
         status: "Success",
