@@ -1,7 +1,7 @@
-DROP DATABASE IF EXISTS sleep_journal;
-CREATE DATABASE sleep_journal;
+DROP DATABASE IF EXISTS sleep_tracker;
+CREATE DATABASE sleep_tracker;
 
--- \c sleep_journal;
+-- \c sleep_tracker;
 
 CREATE TABLE users
 (
