@@ -1,7 +1,7 @@
 DROP DATABASE IF EXISTS sleep_tracker;
 CREATE DATABASE sleep_tracker;
 
--- \c sleep_tracker;
+\c sleep_tracker;
 
 CREATE TABLE users
 (
@@ -72,4 +72,6 @@ VALUES
 INSERT INTO sleep_logs
     (notes)
 VALUES
-    ('ate egg before bed. woke up 3 times. had dream about birds');
+    ('slept in bed. had dream about flying. woke up once.'),
+    ('tossed and turned all night. did not remember dreams.'),
+    ('had coffee 2 hours before bed. hard to fall asleep. had a dream about swimming in an ocean');
