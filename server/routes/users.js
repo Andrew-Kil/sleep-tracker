@@ -5,14 +5,14 @@ const {
   getAllUsers,
   getOneUser,
   createUser,
-  updateUser,
+  //   updateUser,
   deleteUser,
 } = require("../db/queries/users.js");
 
 router.get("/", getAllUsers);
 router.get("/:id", getOneUser);
 router.post("/", createUser);
-router.patch(":/id", updateUser);
+// router.patch(":/id", updateUser);
 router.delete("/:id", deleteUser);
 
 module.exports = router;
