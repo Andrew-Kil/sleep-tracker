@@ -25,10 +25,7 @@ const getOneUser = (req, res, next) => {
 };
 
 const createUser = (req, res, next) => {
-  db.none(
-    "INSERT INTO users(name, sleeping_disorders, sleeping_aids) VALUES(${name}, ${sleeping_disorders}, ${sleeping_aids})",
-    req.body
-  )
+  db.none("INSERT INTO users(name) VALUES(${name})", req.body)
     .then(() => {
       res.status(200).json({
         status: "Success",
