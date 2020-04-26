@@ -4,20 +4,20 @@ This app is designed to track the users sleeping habits & dreams so they can kee
 
 ## M.V.P. - Minimum Viable Product
 
-- [] User can add journal entry
-- [] User can edit journal entry
-- [] User can delete journal entry
-- [] User can write if they did or did not remember dreams for that night
-- [] User can add information about sleep - location, start, stop, duration, did they wake up, caffeine, etc.
+- [ ] User can add journal entry
+- [ ] User can edit journal entry
+- [ ] User can delete journal entry
+- [ ] User can write if they did or did not remember dreams for that night
+- [ ] User can add information about sleep - location, start, stop, duration, did they wake up, caffeine, etc.
 
 ## Additional (optional) features
 
-- [] Visualization of hours slept, themes, etc.
-- [] Login/Signup
-- [] Make posts public/private
-- [] Add friends
-- [] Comment on entries
-- [] User can add tags to entries for reoccuring themes
+- [ ] Visualization of hours slept, themes, etc.
+- [ ] Login/Signup
+- [ ] Make posts public/private
+- [ ] Add friends
+- [ ] Comment on entries
+- [ ] User can add tags to entries for reoccuring themes
 
 ## Todo
 
@@ -36,3 +36,5 @@ This app is designed to track the users sleeping habits & dreams so they can kee
 | Display dream themes                  |    ✅     |     High |
 | Add styling                           |    ⬜️    |      Low |
 | Add routes for different components   |    ⬜️    |   Medium |
+| Add signup                            |    ⬜️    |     High |
+| Add login                             |    ⬜️    |     High |
