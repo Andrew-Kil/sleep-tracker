@@ -6,9 +6,7 @@ CREATE DATABASE sleep_tracker;
 CREATE TABLE users
 (
     id SERIAL PRIMARY KEY,
-    name VARCHAR UNIQUE NOT NULL,
-    sleeping_disorders TEXT NOT NULL,
-    sleeping_aids TEXT NOT NULL
+    name VARCHAR(70) UNIQUE NOT NULL
 );
 
 CREATE TABLE dream_themes
@@ -18,36 +16,30 @@ CREATE TABLE dream_themes
     info TEXT NOT NULL
 );
 
--- CREATE TABLE sleep_logs
--- (
---     id SERIAL PRIMARY KEY,
---     user_id INT REFERENCES users(id),
---     remember_dream BOOLEAN NOT NULL,
---     sleep_location VARCHAR NOT NULL,
---     sleep_start TIME NOT NULL,
---     sleep_end TIME NOT NULL,
---     interrupted_sleep BOOLEAN NOT NULL,
---     notes TEXT
--- );
-
 CREATE TABLE sleep_logs
 (
     id SERIAL PRIMARY KEY,
+    user_id INT REFERENCES users(id),
+    date DATE NOT NULL,
+    remember_dream BOOLEAN NOT NULL,
+    interrupted_sleep BOOLEAN NOT NULL,
+    sleep_start TIME,
+    sleep_end TIME,
     notes TEXT
 );
 
-
 INSERT INTO users
-    (
-    name, sleeping_disorders, sleeping_aids
-    )
+    (name)
 VALUES
-    ('danny devito', 'insomnia', 'melatonin');
+    ('bob'),
+    ('chad'),
+    ('jim'),
+    ('mary'),
+    ('sally'),
+    ('pam');
 
 INSERT INTO dream_themes
-    (
-    theme, info
-    )
+    (theme, info)
 VALUES
     ('death', 'a big change or transformation on the horizon, for you or someone close to you'),
     ('falling', 'a lack of control of insecurity in your life. it might alsos represent failure'),
@@ -62,16 +54,15 @@ VALUES
     ('nakedness', 'vulnerability and exposure in a situation'),
     ('pregnancy', 'growth and/or something new, such as projects, goals, or circumstances');
 
--- INSERT INTO sleep_logs
---     (
---     remember_dream, user_id, sleep_location, sleep_start, sleep_end, interrupted_sleep, notes
---     )
--- VALUES
---     (true, 1, 'bed', '08:00:00', '12:00:00', true, 'ate egg before bed. woke up 3 times. had dream about birds');
-
 INSERT INTO sleep_logs
-    (notes)
+    (user_id, date, remember_dream, interrupted_sleep, sleep_start, sleep_end, notes)
 VALUES
-    ('slept in bed. had dream about flying. woke up once.'),
-    ('tossed and turned all night. did not remember dreams.'),
-    ('had coffee 2 hours before bed. hard to fall asleep. had a dream about swimming in an ocean');
+    (1, '2020-02-05', TRUE, TRUE, '08:00:00', '12:00:00', 'slept in bed. had dream about flying. woke up once.'),
+    (2, '2020-04-11', TRUE, TRUE, '19:00:00', '04:00:00', NULL),
+    (3, '2020-03-03', FALSE, TRUE, '22:00:00', '09:00:00', 'had coffee before bed'),
+    (4, '2020-01-01', FALSE, FALSE, '23:00:00', '09:00:00', 'slept in airbnb'),
+    (5, '2020-02-22', TRUE, FALSE, '19:30:00', '12:00:00', NULL),
+    (6, '2020-04-26', TRUE, TRUE, '19:00:00', '04:00:00', NULL);
+
+
+
