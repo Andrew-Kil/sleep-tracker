@@ -46,3 +46,6 @@ This app is designed to track the users sleeping habits & dreams so they can kee
 | Add login                                               |    ⬜️    |      Low |
 | Add shields to readme                                   |    ⬜️    |      Low |
 | Add Material-UI                                         |    ✅     |   Medium |
+| Replace favicon.ico                                     |    ⬜️    |      Low |
+| Remove/replace logos                                    |    ⬜️    |      Low |
+| Clean up index.html                                     |    ⬜️    |      Low |
