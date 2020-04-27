@@ -1,6 +1,6 @@
 import React from "react";
 
-import AddSleepLogForm from "./AddSleepLogForm";
+import AddSleepLogForm from "./Form/AddSleepLogForm";
 import DisplaySleepLogs from "./DisplaySleepLogs";
 
 const SleepLogs = () => (
