@@ -6,8 +6,8 @@ const NavBar = () => (
     <nav>
       <span>
         <NavLink to="/">
-          <span role="img" aria-label="sleep emoji">
-            😴
+          <span role="img" aria-label="home emoji">
+            🏠
           </span>
         </NavLink>
       </span>
