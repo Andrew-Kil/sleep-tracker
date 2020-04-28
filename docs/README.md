@@ -23,12 +23,22 @@ This app is designed to track the users sleeping habits & dreams so they can kee
 
 | Task                                                    | Completed | Priority |
 | :------------------------------------------------------ | :-------: | -------: |
-| Add more information to README                          |    🚧     |   Medium |
+| - Frontend -                                            |           |          |
+| Add frontend - create react app                         |    ✅     |     High |
+| Add styling                                             |    ⬜️    |      Low |
+| Clean up index.html                                     |    ⬜️    |      Low |
+| Replace favicon.ico                                     |    ⬜️    |      Low |
+| Remove/replace logos                                    |    ⬜️    |      Low |
+| Setup react-router                                      |    ✅     |     High |
+| Create NavBar to route to different components          |    ✅     |     High |
+| Add routes for different components                     |    ✅     |   Medium |
+| - Backend -                                             |           |          |
 | Add db schema                                           |    ✅     |     High |
 | Add seed.sql                                            |    ✅     |     High |
-| Add wireframes/mockups                                  |    ⬜️    |   Medium |
 | Add API routes                                          |    ✅     |     High |
-| Add frontend - create react app                         |    ✅     |     High |
+| - Dream Themes -                                        |           |          |
+| Display dream themes                                    |    ✅     |     High |
+| - Sleep Logs -                                          |           |          |
 | Create form to add a sleep log                          |    🚧     |     High |
 | Display users sleep logs                                |    ✅     |     High |
 | Sleep logs should only be displayed for current user    |    ⬜️    |     High |
@@ -37,15 +47,13 @@ This app is designed to track the users sleeping habits & dreams so they can kee
 | Replace sleep log user ID with the username             |    ⬜️    |      Low |
 | Allow user to edit their sleep logs                     |    ⬜️    |     High |
 | Allow user to delete their sleep logs                   |    ⬜️    |     High |
-| Display dream themes                                    |    ✅     |     High |
-| Add styling                                             |    ⬜️    |      Low |
-| Add routes for different components                     |    ✅     |   Medium |
-| Setup react-router                                      |    ✅     |     High |
-| Create NavBar to route to different components          |    ✅     |     High |
+| - README -                                              |           |          |
+| Add more information to README                          |    🚧     |   Medium |
+| Add shields to readme                                   |    ⬜️    |      Low |
+| - Material-UI -                                         |           |          |
+| Add Material-UI                                         |    ✅     |   Medium |
+| Convert dream themes into cards                         |    ⬜️    |   Medium |
+| - Misc. -                                               |           |          |
+| Add wireframes/mockups                                  |    ⬜️    |   Medium |
 | Add signup                                              |    ⬜️    |      Low |
 | Add login                                               |    ⬜️    |      Low |
-| Add shields to readme                                   |    ⬜️    |      Low |
-| Add Material-UI                                         |    ✅     |   Medium |
-| Replace favicon.ico                                     |    ⬜️    |      Low |
-| Remove/replace logos                                    |    ⬜️    |      Low |
-| Clean up index.html                                     |    ⬜️    |      Low |
