@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
+import IconButton from "@material-ui/core/IconButton";
+import DeleteIcon from "@material-ui/icons/Delete";
+
 const DisplaySleepLogs = () => {
   const [sleepLogs, setSleepLogs] = useState();
   const [isLoading, setIsLoading] = useState(false);
@@ -14,6 +17,14 @@ const DisplaySleepLogs = () => {
     };
     fetchData();
   }, []);
+
+  const handleDelete = (ID) => {
+    axios
+      .delete(`http://localhost:5000/sleep-logs/${ID}`)
+      .catch((err) => console.error(err));
+
+    window.location.reload(true);
+  };
 
   return (
     <div>
@@ -39,6 +50,11 @@ const DisplaySleepLogs = () => {
               sleep end:{sleepLog.sleep_end}
             </div>
             <div style={{ marginTop: "20px" }}>notes: {sleepLog.notes}</div>
+            <IconButton
+              aria-label="delete"
+              onClick={() => handleDelete(sleepLog.id)}>
+              <DeleteIcon fontSize="small" />
+            </IconButton>
           </div>
         ))
       )}
