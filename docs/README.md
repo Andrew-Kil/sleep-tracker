@@ -4,11 +4,11 @@ This app allows users to log information about their sleep & dream activity.
 
 ## M.V.P. - Minimum Viable Product
 
+- [x] User can view sleep logs
 - [x] User can add sleep log
 - [ ] User can edit sleep log
-- [ ] User can delete sleep log
-- [ ] User can write if they did or did not remember dreams for that night
-- [ ] User can add information about sleep - location, start, stop, duration, did they wake up, caffeine, etc.
+- [x] User can delete sleep log
+- [ ] User can view dream themes
 
 ## Additional (optional) features
 
@@ -23,7 +23,7 @@ This app allows users to log information about their sleep & dream activity.
 
 | Task                                                    | Completed | Priority |
 | :------------------------------------------------------ | :-------: | -------: |
-| - Frontend -                                            |           |          |
+| - Frontend -                                            |     -     |        - |
 | Add frontend - create react app                         |    ✅     |     High |
 | Add styling                                             |    ⬜️    |      Low |
 | Clean up index.html                                     |    ⬜️    |      Low |
@@ -32,13 +32,13 @@ This app allows users to log information about their sleep & dream activity.
 | Setup react-router                                      |    ✅     |     High |
 | Create NavBar to route to different components          |    ✅     |     High |
 | Add routes for different components                     |    ✅     |   Medium |
-| - Backend -                                             |           |          |
+| - Backend -                                             |     -     |        - |
 | Add db schema                                           |    ✅     |     High |
 | Add seed.sql                                            |    ✅     |     High |
 | Add API routes                                          |    ✅     |     High |
-| - Dream Themes -                                        |           |          |
+| - Dream Themes -                                        |     -     |        - |
 | Display dream themes                                    |    ✅     |     High |
-| - Sleep Logs -                                          |           |          |
+| - Sleep Logs -                                          |     -     |        - |
 | Create form to add a sleep log                          |    🚧     |     High |
 | Display users sleep logs                                |    ✅     |     High |
 | Sleep logs should only be displayed for current user    |    ⬜️    |     High |
@@ -47,15 +47,16 @@ This app allows users to log information about their sleep & dream activity.
 | Convert sleep log sleep start & stop to readable format |    ⬜️    |      Low |
 | Allow user to post their sleep logs                     |    ✅     |     High |
 | Allow user to edit their sleep logs                     |    ⬜️    |     High |
-| Allow user to delete their sleep logs                   |    ⬜️    |     High |
+| Allow user to delete their sleep logs                   |    ✅     |     High |
 | Display sleep logs sorted by date (descending)          |    ⬜️    |   Medium |
-| - README -                                              |           |          |
+| Add additional fields for form                          |    🚧     |   Medium |
+| - README -                                              |     -     |        - |
 | Add more information to README                          |    🚧     |   Medium |
 | Add shields to readme                                   |    ⬜️    |      Low |
-| - Material-UI -                                         |           |          |
+| - Material-UI -                                         |     -     |        - |
 | Add Material-UI                                         |    ✅     |   Medium |
 | Convert dream themes into cards                         |    ⬜️    |   Medium |
-| - Misc. -                                               |           |          |
+| - Misc. -                                               |     -     |        - |
 | Add wireframes/mockups                                  |    ⬜️    |   Medium |
 | Add signup                                              |    ⬜️    |      Low |
 | Add login                                               |    ⬜️    |      Low |
