@@ -1,12 +1,12 @@
 # Sleep Tracker
 
-This app is designed to track the users sleeping habits & dreams so they can keep track of information including how many hours they slept and what kind of dreams they had. Over time, the user will be better informed about their sleeping patterns as well as any reoccuring themes in their dreams.
+This app allows users to log information about their sleep & dream activity.
 
 ## M.V.P. - Minimum Viable Product
 
-- [ ] User can add journal entry
-- [ ] User can edit journal entry
-- [ ] User can delete journal entry
+- [x] User can add sleep log
+- [ ] User can edit sleep log
+- [ ] User can delete sleep log
 - [ ] User can write if they did or did not remember dreams for that night
 - [ ] User can add information about sleep - location, start, stop, duration, did they wake up, caffeine, etc.
 
@@ -42,11 +42,13 @@ This app is designed to track the users sleeping habits & dreams so they can kee
 | Create form to add a sleep log                          |    🚧     |     High |
 | Display users sleep logs                                |    ✅     |     High |
 | Sleep logs should only be displayed for current user    |    ⬜️    |     High |
+| Replace sleep log user ID with the username             |    ⬜️    |      Low |
 | Convert sleep log date to readable format               |    ⬜️    |      Low |
 | Convert sleep log sleep start & stop to readable format |    ⬜️    |      Low |
-| Replace sleep log user ID with the username             |    ⬜️    |      Low |
+| Allow user to post their sleep logs                     |    ✅     |     High |
 | Allow user to edit their sleep logs                     |    ⬜️    |     High |
 | Allow user to delete their sleep logs                   |    ⬜️    |     High |
+| Display sleep logs sorted by date (descending)          |    ⬜️    |   Medium |
 | - README -                                              |           |          |
 | Add more information to README                          |    🚧     |   Medium |
 | Add shields to readme                                   |    ⬜️    |      Low |
