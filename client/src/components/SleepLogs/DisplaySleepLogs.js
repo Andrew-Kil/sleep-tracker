@@ -22,7 +22,6 @@ const DisplaySleepLogs = () => {
     axios
       .delete(`http://localhost:5000/sleep-logs/${ID}`)
       .catch((err) => console.error(err));
-
     window.location.reload(true);
   };
 

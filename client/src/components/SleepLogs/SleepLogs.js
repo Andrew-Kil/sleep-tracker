@@ -1,11 +1,11 @@
 import React from "react";
 
-import AddSleepLogForm from "./Form/AddSleepLogForm";
+import Form from "./Form";
 import DisplaySleepLogs from "./DisplaySleepLogs";
 
 const SleepLogs = () => (
   <>
-    <AddSleepLogForm></AddSleepLogForm>
+    <Form></Form>
     <DisplaySleepLogs></DisplaySleepLogs>
   </>
 );
