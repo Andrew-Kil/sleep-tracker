@@ -2,8 +2,8 @@ import React from "react";
 
 import { Switch, Route } from "react-router-dom";
 
-import NavBar from "./components/NavBar";
-import Home from "./components/Home";
+import NavBar from "./components/NavBar/NavBar";
+import Home from "./components/Home/Home";
 import SleepLogs from "./components/SleepLogs/SleepLogs";
 import DisplayDreamThemes from "./components/DisplayDreamThemes";
 
