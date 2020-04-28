@@ -54,7 +54,7 @@ const NavBar = (props) => {
   const classes = useStyles();
   return (
     <div style={{ marginBottom: "50px" }}>
-      <AppBar>
+      <AppBar color="secondary">
         <Toolbar>
           <Grid container spacing={6}>
             <Grid item xs>
@@ -83,7 +83,7 @@ const NavBar = (props) => {
       </AppBar>
       <Toolbar id="back-to-top-anchor" />
       <ScrollTop {...props}>
-        <Fab color="primary" size="small" aria-label="scroll back to top">
+        <Fab color="secondary" size="small" aria-label="scroll back to top">
           <KeyboardArrowUpIcon />
         </Fab>
       </ScrollTop>
