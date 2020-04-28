@@ -25,9 +25,13 @@ const getOneSleepLog = (req, res, next) => {
 };
 
 const createSleepLog = (req, res, next) => {
-  db.none(
-    "INSERT INTO sleep_logs(user_id, sleep_log_date, remember_dream, interrupted_sleep, sleep_start, sleep_end, notes) VALUES(${notes})",
-    req.body
+  db.one(
+    "INSERT INTO sleep_logs (sleep_start, sleep_end, notes) VALUES (${sleep_start}, ${sleep_end}, ${notes}) RETURNING *",
+    {
+      sleep_start: req.body.sleep_start,
+      sleep_end: req.body.sleep_end,
+      notes: req.body.notes,
+    }
   )
     .then(() => {
       res.status(200).json({
@@ -39,7 +43,7 @@ const createSleepLog = (req, res, next) => {
 };
 
 const deleteSleepLog = (req, res, next) => {
-  db.result("DELETE FROM songs WHERE id=$1", +req.params.id)
+  db.result("DELETE FROM sleep_logs WHERE id=$1", +req.params.id)
     .then((data) => {
       res.status(200).json({
         status: "Success",
