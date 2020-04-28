@@ -16,13 +16,25 @@ CREATE TABLE dream_themes
     info TEXT NOT NULL
 );
 
+-- CREATE TABLE sleep_logs
+-- (
+--     id SERIAL PRIMARY KEY,
+--     user_id INT REFERENCES users(id),
+--     date DATE NOT NULL,
+--     remember_dream BOOLEAN NOT NULL,
+--     interrupted_sleep BOOLEAN NOT NULL,
+--     sleep_start TIME,
+--     sleep_end TIME,
+--     notes TEXT
+-- );
+
 CREATE TABLE sleep_logs
 (
     id SERIAL PRIMARY KEY,
-    user_id INT REFERENCES users(id),
-    date DATE NOT NULL,
-    remember_dream BOOLEAN NOT NULL,
-    interrupted_sleep BOOLEAN NOT NULL,
+    -- user_id INT REFERENCES users(id),
+    -- date DATE NOT NULL,
+    -- remember_dream BOOLEAN NOT NULL,
+    -- interrupted_sleep BOOLEAN NOT NULL,
     sleep_start TIME,
     sleep_end TIME,
     notes TEXT
@@ -55,14 +67,37 @@ VALUES
     ('pregnancy', 'growth and/or something new, such as projects, goals, or circumstances');
 
 INSERT INTO sleep_logs
-    (user_id, date, remember_dream, interrupted_sleep, sleep_start, sleep_end, notes)
+    -- (user_id, date, remember_dream, interrupted_sleep, sleep_start, sleep_end, notes)
+    (sleep_start, sleep_end, notes)
 VALUES
-    (1, '2020-02-05', TRUE, TRUE, '08:00:00', '12:00:00', 'slept in bed. had dream about flying. woke up once.'),
-    (2, '2020-04-11', TRUE, TRUE, '19:00:00', '04:00:00', NULL),
-    (3, '2020-03-03', FALSE, TRUE, '22:00:00', '09:00:00', 'had coffee before bed'),
-    (4, '2020-01-01', FALSE, FALSE, '23:00:00', '09:00:00', 'slept in airbnb'),
-    (5, '2020-02-22', TRUE, FALSE, '19:30:00', '12:00:00', NULL),
-    (6, '2020-04-26', TRUE, TRUE, '19:00:00', '04:00:00', NULL);
+    -- (1, '2020-02-05', TRUE, TRUE, '08:00:00', '12:00:00', 'slept in bed. had dream about flying. woke up once.'),
+    -- (2, '2020-04-11', TRUE, TRUE, '19:00:00', '04:00:00', NULL),
+    -- (3, '2020-03-03', FALSE, TRUE, '22:00:00', '09:00:00', 'had coffee before bed'),
+    -- (4, '2020-01-01', FALSE, FALSE, '23:00:00', '09:00:00', 'slept in airbnb'),
+    -- (5, '2020-02-22', TRUE, FALSE, '19:30:00', '12:00:00', NULL),
+    -- (6, '2020-04-26', TRUE, TRUE, '19:00:00', '04:00:00', NULL);
+    -- (1, '08:00:00', '12:00:00', 'slept in bed. had dream about flying. woke up once.'),
+    -- (1, '19:00:00', '04:00:00', NULL),
+    -- (1, '22:00:00', '09:00:00', 'had coffee before bed'),
+    -- (1, '23:00:00', '09:00:00', 'slept in airbnb'),
+    -- (1, '19:30:00', '12:00:00', NULL),
+    -- (1, '19:00:00', '04:00:00', NULL),
+    -- (2, '17:00:00', '10:00:00', NULL),
+    -- (3, '11:00:00', '15:00:00', 'dog woke me up'),
+    -- (4, '15:00:00', '19:00:00', 'blah blah'),
+    -- (5, '22:00:00', '05:00:00', 'dreamt about money'),
+    -- (6, '23:00:00', '09:00:00', 'hello world');
+    ('08:00:00', '12:00:00', 'slept in bed. had dream about flying. woke up once.'),
+    ('19:00:00', '04:00:00', NULL),
+    ('22:00:00', '09:00:00', 'had coffee before bed'),
+    ('23:00:00', '09:00:00', 'slept in airbnb'),
+    ('19:30:00', '12:00:00', NULL),
+    ('19:00:00', '04:00:00', NULL),
+    ('17:00:00', '10:00:00', NULL),
+    ('11:00:00', '15:00:00', 'dog woke me up'),
+    ('15:00:00', '19:00:00', 'blah blah'),
+    ('22:00:00', '05:00:00', 'dreamt about money'),
+    ('23:00:00', '09:00:00', 'hello world');
 
 
 
