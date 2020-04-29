@@ -1,9 +1,25 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 
 import axios from "axios";
 
 import { makeStyles } from "@material-ui/core/styles";
-import { Grid, Typography, TextField, Button } from "@material-ui/core";
+import {
+  Grid,
+  Typography,
+  TextField,
+  Button,
+  Radio,
+  RadioGroup,
+  FormControlLabel,
+  FormControl,
+  FormLabel,
+} from "@material-ui/core";
+import {
+  MuiPickersUtilsProvider,
+  KeyboardTimePicker,
+  KeyboardDatePicker,
+} from "@material-ui/pickers";
+import DateFnsUtils from "@date-io/date-fns";
 
 const useStyles = makeStyles((theme) => ({
   layout: {
@@ -19,8 +35,11 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Form = () => {
-  const [sleepStart, setSleepStart] = useState("");
-  const [sleepEnd, setSleepEnd] = useState("");
+  const [date, setDate] = useState(new Date());
+  const [rememberDream, setRememberDream] = useState("");
+  const [sleepInterrupted, setSleepInterrupted] = useState("");
+  const [sleepStart, setSleepStart] = useState(new Date(0));
+  const [sleepEnd, setSleepEnd] = useState(new Date(0));
   const [notes, setNotes] = useState("");
 
   const classes = useStyles();
@@ -29,12 +48,26 @@ const Form = () => {
     e.preventDefault();
     axios
       .post("http://localhost:5000/sleep-logs", {
-        sleep_start: sleepStart,
-        sleep_end: sleepEnd,
-        notes: notes,
+        date: date.toISOString().slice(0, 10),
+        remember_dream: rememberDream === "true",
+        sleep_interrupted: sleepInterrupted === "true",
+        sleep_start: `${sleepStart}`.split(" ")[4],
+        sleep_end: `${sleepEnd}`.toString().split(" ")[4],
+        notes,
       })
       .then(() => alert("log submitted successfully!"))
-      .catch((err) => console.error(err));
+      // use react-router to route user to sleep-logs
+      .catch((err) => console.log(err));
+
+    console.log(
+      "date.toISOString().slice(0, 10)",
+      typeof date.toISOString().slice(0, 10)
+    );
+    console.log("rememberDream", rememberDream === "true");
+    console.log("sleepInterrupted", sleepInterrupted === "true");
+    console.log("sleepStart", `${sleepStart}`.split(" ")[4]);
+    console.log("sleepEnd", `${sleepEnd}`.toString().split(" ")[4]);
+    console.log("notes", notes);
   };
 
   return (
@@ -49,42 +82,37 @@ const Form = () => {
           Sleep Log Form
         </Typography>
         <Grid container spacing={3}>
-          <Grid item xs={12} sm={6}>
-            <TextField
-              required
-              id="sleepStart"
-              name="sleepStart"
-              label="Sleep Start"
-              type="time"
-              defaultValue="22:30"
-              fullWidth
-              InputLabelProps={{
-                shrink: true,
-              }}
-              inputProps={{
-                step: 300,
-              }}
-              onChange={(e) => setSleepStart(e.target.value)}
-            />
-          </Grid>
-          <Grid item xs={12} sm={6}>
-            <TextField
-              required
-              id="sleepEnd"
-              name="sleepEnd"
-              label="Sleep End"
-              type="time"
-              defaultValue="07:15"
-              fullWidth
-              InputLabelProps={{
-                shrink: true,
-              }}
-              inputProps={{
-                step: 300,
-              }}
-              onChange={(e) => setSleepEnd(e.target.value)}
-            />
-          </Grid>
+          <MuiPickersUtilsProvider utils={DateFnsUtils}>
+            <Grid item xs={12} sm={12}>
+              <KeyboardDatePicker
+                margin="normal"
+                label="Date"
+                format="MM/dd/yyyy"
+                value={date}
+                onChange={setDate}
+                KeyboardButtonProps={{ "aria-label": "change date" }}
+              />
+            </Grid>
+            <Grid item xs={12} sm={6}>
+              <KeyboardTimePicker
+                required
+                margin="normal"
+                label="Sleep Start"
+                value={sleepStart}
+                onChange={setSleepStart}
+                emptyLabel
+              />
+            </Grid>
+            <Grid item xs={12} sm={6}>
+              <KeyboardTimePicker
+                required
+                margin="normal"
+                label="Sleep End"
+                value={sleepEnd}
+                onChange={setSleepEnd}
+              />
+            </Grid>
+          </MuiPickersUtilsProvider>
           <Grid item xs={12} sm={12}>
             <TextField
               id="notes"
@@ -98,6 +126,48 @@ const Form = () => {
               variant="outlined"
               onChange={(e) => setNotes(e.target.value)}
             />
+          </Grid>
+          <Grid item xs={12} sm={6}>
+            <FormControl component="fieldset">
+              <FormLabel component="legend">Remember dream?</FormLabel>
+              <RadioGroup
+                aria-label="remember dream"
+                name="remember dream"
+                value={rememberDream}
+                onChange={(e) => setRememberDream(e.target.value)}>
+                <FormControlLabel
+                  value="true"
+                  control={<Radio />}
+                  label="True"
+                />
+                <FormControlLabel
+                  value="false"
+                  control={<Radio />}
+                  label="False"
+                />
+              </RadioGroup>
+            </FormControl>
+          </Grid>
+          <Grid item xs={12} sm={6}>
+            <FormControl component="fieldset">
+              <FormLabel component="legend">Sleep interrupted?</FormLabel>
+              <RadioGroup
+                aria-label="sleep interrupted"
+                name="sleep interrupted"
+                value={sleepInterrupted}
+                onChange={(e) => setSleepInterrupted(e.target.value)}>
+                <FormControlLabel
+                  value="true"
+                  control={<Radio />}
+                  label="True"
+                />
+                <FormControlLabel
+                  value="false"
+                  control={<Radio />}
+                  label="False"
+                />
+              </RadioGroup>
+            </FormControl>
           </Grid>
           <Grid item xs={12} sm={12}>
             <Button variant="contained" color="primary" onClick={handleSubmit}>
