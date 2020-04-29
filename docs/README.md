@@ -18,6 +18,9 @@ This app allows users to log information about their sleep & dream activity.
 - [ ] Comment on entries
 - [ ] User can add tags to entries for reoccuring themes
 - [ ] Give user the option to make their sleep log public or private
+- [ ] Give user the option to choose between military time and standard time
+- [ ] Dark/Light mode
+- [ ] Implement search/filter feature
 
 ## Todo
 
@@ -49,7 +52,8 @@ This app allows users to log information about their sleep & dream activity.
 | Allow user to edit their sleep logs                     |    ⬜️    |     High |
 | Allow user to delete their sleep logs                   |    ✅     |     High |
 | Display sleep logs sorted by date (descending)          |    ⬜️    |   Medium |
-| Add additional fields for form                          |    🚧     |   Medium |
+| Add additional fields for form                          |    ✅     |   Medium |
+| Refactor Form.js using refs                             |    ⬜️    |   Medium |
 | - README -                                              |     -     |        - |
 | Add more information to README                          |    🚧     |   Medium |
 | Add shields to readme                                   |    ⬜️    |      Low |
