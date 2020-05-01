@@ -1,4 +1,4 @@
-const { db } = require("./index.js");
+const { db } = require("../index.js");
 
 const getAllDreamThemes = (req, res, next) => {
   db.any("SELECT * FROM dream_themes")

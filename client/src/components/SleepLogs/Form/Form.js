@@ -35,7 +35,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Form = () => {
-  const [date, setDate] = useState(new Date());
+  const [postDate, setPostDate] = useState(new Date());
   const [rememberDream, setRememberDream] = useState("");
   const [sleepInterrupted, setSleepInterrupted] = useState("");
   const [sleepStart, setSleepStart] = useState(new Date(0));
@@ -46,13 +46,14 @@ const Form = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    debugger;
     axios
       .post("http://localhost:5000/sleep-logs", {
-        date: date.toISOString().slice(0, 10),
-        remember_dream: rememberDream === "true",
-        sleep_interrupted: sleepInterrupted === "true",
+        post_date: postDate.toISOString().slice(0, 10),
+        remember_dream: rememberDream,
+        sleep_interrupted: sleepInterrupted,
         sleep_start: `${sleepStart}`.split(" ")[4],
-        sleep_end: `${sleepEnd}`.toString().split(" ")[4],
+        sleep_end: `${sleepEnd}`.split(" ")[4],
         notes,
       })
       .then(() => alert("log submitted successfully!"))
@@ -60,13 +61,13 @@ const Form = () => {
       .catch((err) => console.log(err));
 
     console.log(
-      "date.toISOString().slice(0, 10)",
-      typeof date.toISOString().slice(0, 10)
+      "post_date.toISOString().slice(0, 10)",
+      postDate.toISOString().slice(0, 10)
     );
-    console.log("rememberDream", rememberDream === "true");
-    console.log("sleepInterrupted", sleepInterrupted === "true");
+    console.log("rememberDream", rememberDream);
+    console.log("sleepInterrupted", sleepInterrupted);
     console.log("sleepStart", `${sleepStart}`.split(" ")[4]);
-    console.log("sleepEnd", `${sleepEnd}`.toString().split(" ")[4]);
+    console.log("sleepEnd", `${sleepEnd}`.split(" ")[4]);
     console.log("notes", notes);
   };
 
@@ -88,8 +89,8 @@ const Form = () => {
                 margin="normal"
                 label="Date"
                 format="MM/dd/yyyy"
-                value={date}
-                onChange={setDate}
+                value={postDate}
+                onChange={setPostDate}
                 KeyboardButtonProps={{ "aria-label": "change date" }}
               />
             </Grid>
@@ -135,16 +136,8 @@ const Form = () => {
                 name="remember dream"
                 value={rememberDream}
                 onChange={(e) => setRememberDream(e.target.value)}>
-                <FormControlLabel
-                  value="true"
-                  control={<Radio />}
-                  label="True"
-                />
-                <FormControlLabel
-                  value="false"
-                  control={<Radio />}
-                  label="False"
-                />
+                <FormControlLabel value="yes" control={<Radio />} label="Yes" />
+                <FormControlLabel value="no" control={<Radio />} label="No" />
               </RadioGroup>
             </FormControl>
           </Grid>
@@ -156,16 +149,8 @@ const Form = () => {
                 name="sleep interrupted"
                 value={sleepInterrupted}
                 onChange={(e) => setSleepInterrupted(e.target.value)}>
-                <FormControlLabel
-                  value="true"
-                  control={<Radio />}
-                  label="True"
-                />
-                <FormControlLabel
-                  value="false"
-                  control={<Radio />}
-                  label="False"
-                />
+                <FormControlLabel value="yes" control={<Radio />} label="Yes" />
+                <FormControlLabel value="no" control={<Radio />} label="No" />
               </RadioGroup>
             </FormControl>
           </Grid>
