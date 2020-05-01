@@ -1,4 +1,4 @@
-const { db } = require("./index.js");
+const { db } = require("../index.js");
 
 const getAllSleepLogs = (req, res, next) => {
   db.any("SELECT * FROM sleep_logs")
