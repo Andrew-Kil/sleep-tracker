@@ -21,7 +21,7 @@ CREATE TABLE dream_themes
 CREATE TABLE sleep_logs
 (
     id SERIAL PRIMARY KEY,
-    post_date DATE,
+    post_date DATE NOT NULL,
     remember_dream BOOLEAN,
     sleep_interrupted BOOLEAN,
     sleep_start TIME,

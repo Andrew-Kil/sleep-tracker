@@ -46,7 +46,6 @@ const Form = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    debugger;
     axios
       .post("http://localhost:5000/sleep-logs", {
         post_date: postDate.toISOString().slice(0, 10),
@@ -59,16 +58,6 @@ const Form = () => {
       .then(() => alert("log submitted successfully!"))
       // use react-router to route user to sleep-logs
       .catch((err) => console.log(err));
-
-    console.log(
-      "post_date.toISOString().slice(0, 10)",
-      postDate.toISOString().slice(0, 10)
-    );
-    console.log("rememberDream", rememberDream);
-    console.log("sleepInterrupted", sleepInterrupted);
-    console.log("sleepStart", `${sleepStart}`.split(" ")[4]);
-    console.log("sleepEnd", `${sleepEnd}`.split(" ")[4]);
-    console.log("notes", notes);
   };
 
   return (
