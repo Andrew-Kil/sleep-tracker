@@ -6,7 +6,9 @@ CREATE DATABASE sleep_tracker;
 CREATE TABLE users
 (
     id SERIAL PRIMARY KEY,
-    name VARCHAR(70) UNIQUE NOT NULL
+    name VARCHAR(70) UNIQUE NOT NULL,
+    email VARCHAR(255) UNIQUE NOT NULL,
+    password VARCHAR NOT NULL
 );
 
 CREATE TABLE dream_themes
@@ -19,7 +21,7 @@ CREATE TABLE dream_themes
 CREATE TABLE sleep_logs
 (
     id SERIAL PRIMARY KEY,
-    date DATE,
+    post_date DATE,
     remember_dream BOOLEAN,
     sleep_interrupted BOOLEAN,
     sleep_start TIME,
@@ -28,14 +30,14 @@ CREATE TABLE sleep_logs
 );
 
 INSERT INTO users
-    (name)
+    (name, email, password)
 VALUES
-    ('bob'),
-    ('chad'),
-    ('jim'),
-    ('mary'),
-    ('sally'),
-    ('pam');
+    ('bob', 'bob@gmail.com', 'abc123'),
+    ('chad', 'chad@yahoo.com', 'password'),
+    ('jim', 'jim@hotmail.com', 'hello1'),
+    ('mary', 'mary@aol.com', 'mary123'),
+    ('sally', 'sally@me.com', 'sallyspassword'),
+    ('pam', 'pam@netscape.com', 'test');
 
 INSERT INTO dream_themes
     (theme, info)
@@ -54,13 +56,15 @@ VALUES
     ('pregnancy', 'growth and/or something new, such as projects, goals, or circumstances');
 
 INSERT INTO sleep_logs
-    (date, remember_dream, sleep_interrupted, sleep_start, sleep_end, notes)
+    (post_date, remember_dream, sleep_interrupted, sleep_start, sleep_end, notes)
 VALUES
     ('2020-02-05', TRUE, TRUE, '08:00:00', '12:00:00', 'slept in bed. had dream about flying. woke up once.'),
     ('2020-04-11', TRUE, TRUE, '19:00:00', '04:00:00', NULL),
     ('2020-03-03', FALSE, TRUE, '22:00:00', '09:00:00', 'had coffee before bed'),
     ('2020-01-01', FALSE, FALSE, '23:00:00', '09:00:00', 'slept in airbnb'),
     ('2020-02-22', TRUE, FALSE, '19:30:00', '12:00:00', NULL),
-    ('2020-04-26', TRUE, TRUE, '19:00:00', '04:00:00', NULL);
+    ('2020-04-26', TRUE, TRUE, '19:00:00', '04:00:00', NULL),
+    ('2020-04-26', 'yes', 'no', '19:00:00', '04:00:00', NULL),
+    ('2020-04-26', 'no', 'yes', '19:00:00', '04:00:00', NULL);
 
   
