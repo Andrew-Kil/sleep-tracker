@@ -45,39 +45,41 @@ const DisplaySleepLogs = () => {
       ) : (
         sleepLogs &&
         sleepLogs.data.map((sleepLog, i) => (
-          <Grid
-            container
-            spacing={0}
-            direction="column"
-            alignItems="center"
-            justify="center">
-            <Grid item xs={6} style={{ minWidth: "75vw", margin: "25px" }}>
-              <Paper elevation={3} className={classes.root} key={i}>
-                <Typography variant="h5" component="h3">
-                  {sleepLog.post_date.slice(0, 10)}
-                </Typography>
-                <Typography component="p">
-                  remember dream: {sleepLog.remember_dream ? "true" : "false"}
-                </Typography>
-                <Typography component="p">
-                  interrupted sleep:{" "}
-                  {sleepLog.interrupted_sleep ? "true" : "false"}
-                </Typography>
-                <Typography component="p">
-                  sleep start: {sleepLog.sleep_start}
-                </Typography>
-                <Typography component="p">
-                  sleep end:{sleepLog.sleep_end}
-                </Typography>
-                <Typography component="p">notes: {sleepLog.notes}</Typography>
-                <IconButton
-                  aria-label="delete"
-                  onClick={() => handleDelete(sleepLog.id)}>
-                  <DeleteIcon fontSize="small" />
-                </IconButton>
-              </Paper>
+          <div key={i}>
+            <Grid
+              container
+              spacing={0}
+              direction="column"
+              alignItems="center"
+              justify="center">
+              <Grid item xs={6} style={{ minWidth: "75vw", margin: "25px" }}>
+                <Paper elevation={3} className={classes.root} key={i}>
+                  <Typography variant="h5" component="h3">
+                    {sleepLog.post_date.slice(0, 10)}
+                  </Typography>
+                  <Typography component="p">
+                    remember dream: {sleepLog.remember_dream ? "true" : "false"}
+                  </Typography>
+                  <Typography component="p">
+                    interrupted sleep:{" "}
+                    {sleepLog.interrupted_sleep ? "true" : "false"}
+                  </Typography>
+                  <Typography component="p">
+                    sleep start: {sleepLog.sleep_start}
+                  </Typography>
+                  <Typography component="p">
+                    sleep end:{sleepLog.sleep_end}
+                  </Typography>
+                  <Typography component="p">notes: {sleepLog.notes}</Typography>
+                  <IconButton
+                    aria-label="delete"
+                    onClick={() => handleDelete(sleepLog.id)}>
+                    <DeleteIcon fontSize="small" />
+                  </IconButton>
+                </Paper>
+              </Grid>
             </Grid>
-          </Grid>
+          </div>
         ))
       )}
     </div>
