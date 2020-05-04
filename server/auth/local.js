@@ -10,7 +10,7 @@ passport.use(
       username: username,
     })
       .then((user) => {
-        if (!helpers.comparePass(password, user.password_digest)) {
+        if (!helpers.comparePasswords(password, user.password_digest)) {
           return done(null, false);
         } else {
           return done(null, user);
