@@ -1,55 +1,46 @@
 const { db } = require("../index.js");
 
-const getAllUsers = (req, res, next) => {
-  db.any("SELECT * FROM users")
-    .then((data) => {
-      res.status(200).json({
-        status: "Success",
-        data,
-        message: "Received all users",
-      });
-    })
-    .catch((err) => next(err));
+const authHelpers = require("../../auth/helpers");
+
+const createUser = async (user) => {
+  const passwordDigest = await authHelpers.hashPassword(user.password);
+
+  const insertUserQuery = `
+      INSERT INTO users (username, password_digest) 
+        VALUES ($/username/, $/password/)
+        RETURNING *
+    `;
+
+  const newUser = await db.one(insertUserQuery, {
+    username: user.username,
+    password: passwordDigest,
+  });
+
+  delete newUser.password_digest;
+  return newUser;
 };
 
-const getOneUser = (req, res, next) => {
-  db.one("SELECT * FROM users WHERE users.id = $1", +req.params.id)
-    .then((data) => {
-      res.status(200).json({
-        status: "Success",
-        data,
-        messsage: "Received one user",
-      });
-    })
-    .catch((err) => next(err));
+const getUserByUsername = async (username) => {
+  try {
+    const user = await db.one(
+      "SELECT * FROM users WHERE username = $1",
+      username
+    );
+    return user;
+  } catch (err) {
+    if (err.message === "No data returned from the query") {
+      return null;
+    }
+  }
 };
 
-const createUser = (req, res, next) => {
-  db.none("INSERT INTO users(name) VALUES(${name})", req.body)
-    .then(() => {
-      res.status(200).json({
-        status: "Success",
-        message: "Created new user",
-      });
-    })
-    .catch((err) => next(err));
-};
-
-const deleteUser = (req, res, next) => {
-  db.result("DELETE FROM users WHERE id=$1", +req.params.id)
-    .then((data) => {
-      res.status(200).json({
-        status: "Success",
-        data,
-        message: "Removed a user",
-      });
-    })
-    .catch((err) => next(err));
+const getAllUsers = async () => {
+  const users = await db.any("SELECT id, username FROM users");
+  return users;
 };
 
 module.exports = {
-  getAllUsers,
-  getOneUser,
   createUser,
-  deleteUser,
+  getUserByUsername,
+  getAllUsers,
 };
