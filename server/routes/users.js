@@ -1,18 +1,18 @@
 const express = require("express");
 const router = express.Router();
+const usersQueries = require("../db/queries/users");
 
-const {
-  getAllUsers,
-  getOneUser,
-  createUser,
-  //   updateUser,
-  deleteUser,
-} = require("../db/queries/users.js");
-
-router.get("/", getAllUsers);
-router.get("/:id", getOneUser);
-router.post("/", createUser);
-// router.patch(":/id", updateUser);
-router.delete("/:id", deleteUser);
+router.get("/", async (req, res, next) => {
+  try {
+    const users = await usersQueries.getAllUsers();
+    res.send({
+      payload: users,
+      msg: "Retrieved all users",
+      err: false,
+    });
+  } catch (err) {
+    next(err);
+  }
+});
 
 module.exports = router;
