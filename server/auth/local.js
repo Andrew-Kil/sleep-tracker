@@ -3,21 +3,20 @@ const LocalStrategy = require("passport-local").Strategy;
 const init = require("./passport");
 const helpers = require("./helpers");
 const { db } = require("../db");
-const options = { usernameField: "email", passwordField: "password" };
 
 passport.use(
-  new LocalStrategy(options, (email, password, done) => {
-    db.one("SELECT * FROM users WHERE email = ${email}", { email })
+  new LocalStrategy((username, password, done) => {
+    db.one("SELECT * FROM users WHERE username = ${username}", {
+      username: username,
+    })
       .then((user) => {
-        if (!helpers.comparePass(password, user.password)) {
+        if (!helpers.comparePass(password, user.password_digest)) {
           return done(null, false);
         } else {
-          const { id, name, email } = user;
-          return done(null, { id, name, email });
+          return done(null, user);
         }
       })
       .catch((err) => {
-        console.log(err);
         return done(err);
       });
   })
