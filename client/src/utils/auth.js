@@ -1,4 +1,4 @@
-const auth = {
+const Auth = {
   authenticateUser: (token) => {
     localStorage.setItem("token", token);
   },

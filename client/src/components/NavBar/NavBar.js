@@ -66,15 +66,29 @@ const NavBar = (props) => {
             </Grid>
             <Grid item xs>
               <Paper className={classes.paper}>
-                <NavLink to="sleep-logs" style={{ textDecoration: "none" }}>
+                <NavLink to="/sleep-logs" style={{ textDecoration: "none" }}>
                   <Typography variant="h6">Sleep Logs</Typography>
                 </NavLink>
               </Paper>
             </Grid>
             <Grid item xs>
               <Paper className={classes.paper}>
-                <NavLink to="dream-themes" style={{ textDecoration: "none" }}>
+                <NavLink to="/dream-themes" style={{ textDecoration: "none" }}>
                   <Typography variant="h6">Dream Themes</Typography>
+                </NavLink>
+              </Paper>
+            </Grid>
+            <Grid item xs>
+              <Paper className={classes.paper}>
+                <NavLink to="/auth/login" style={{ textDecoration: "none" }}>
+                  <Typography variant="h6">Login</Typography>
+                </NavLink>
+              </Paper>
+            </Grid>
+            <Grid item xs>
+              <Paper className={classes.paper}>
+                <NavLink to="/auth/register" style={{ textDecoration: "none" }}>
+                  <Typography variant="h6">Register</Typography>
                 </NavLink>
               </Paper>
             </Grid>

@@ -1,16 +1,20 @@
 const passport = require("passport");
-const { db } = require("../db");
+const db = require("../db/index");
 
 module.exports = () => {
-  passport.serializeUser((user, done) => done(null, user.email));
+  passport.serializeUser((user, done) => {
+    done(null, user.username);
+  });
 
-  passport.deserializeUser((email, done) =>
-    db
-      .one("SELECT * FROM users WHERE email = ${email}", { email })
+  passport.deserializeUser((username, done) => {
+    db.one("SELECT * FROM users WHERE username = ${username}", {
+      username: username,
+    })
       .then((user) => {
-        const { id, name, email } = user;
-        done(null, { id, name, email });
+        done(null, user.username);
       })
-      .catch((err) => done(err, null))
-  );
+      .catch((err) => {
+        done(err, null);
+      });
+  });
 };

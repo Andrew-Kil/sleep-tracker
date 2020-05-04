@@ -6,9 +6,8 @@ CREATE DATABASE sleep_tracker;
 CREATE TABLE users
 (
     id SERIAL PRIMARY KEY,
-    name VARCHAR(70) UNIQUE NOT NULL,
-    email VARCHAR(255) UNIQUE NOT NULL,
-    password VARCHAR NOT NULL
+    username VARCHAR(32) UNIQUE NOT NULL,
+    password_digest VARCHAR(32) UNIQUE NOT NULL
 );
 
 CREATE TABLE dream_themes
@@ -30,14 +29,14 @@ CREATE TABLE sleep_logs
 );
 
 INSERT INTO users
-    (name, email, password)
+    (username, password_digest)
 VALUES
-    ('bob', 'bob@gmail.com', 'abc123'),
-    ('chad', 'chad@yahoo.com', 'password'),
-    ('jim', 'jim@hotmail.com', 'hello1'),
-    ('mary', 'mary@aol.com', 'mary123'),
-    ('sally', 'sally@me.com', 'sallyspassword'),
-    ('pam', 'pam@netscape.com', 'test');
+    ('bob', 'abc123'),
+    ('chad', 'password'),
+    ('jim', 'hello1'),
+    ('mary', 'mary123'),
+    ('sally', 'sallyspassword'),
+    ('pam', 'test');
 
 INSERT INTO dream_themes
     (theme, info)
