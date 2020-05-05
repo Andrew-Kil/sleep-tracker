@@ -1,8 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const usersQueries = require("../db/queries/users");
-// const passport = require("../auth/passport");
-const local = require("../auth/local");
+const passport = require("../auth/local");
 
 router.post("/signup", async (req, res, next) => {
   try {
@@ -18,12 +17,16 @@ router.post("/signup", async (req, res, next) => {
   }
 });
 
-router.post("/login", local.authenticate("local"), async (req, res, next) => {
-  res.json({
-    payload: req.user,
-    msg: `Welcome ${req.user.username}. You are logged in!`,
-    err: false,
-  });
-});
+router.post(
+  "/login",
+  passport.authenticate("local"),
+  async (req, res, next) => {
+    res.json({
+      payload: req.user,
+      msg: `Welcome ${req.user.username}. You are logged in!`,
+      err: false,
+    });
+  }
+);
 
 module.exports = router;

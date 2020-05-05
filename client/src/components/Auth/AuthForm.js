@@ -1,10 +1,13 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { Route, Switch } from "react-router-dom";
+import { Redirect, Route, Switch } from "react-router-dom";
 import Auth from "../../utils/Auth";
 import Form from "./Form";
 
 const AuthForm = (props) => {
+  const { checkAuthenticateStatus, isLoggedIn } = props;
+
+  const [isSubmitted, setIsSubmitted] = useState(false);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
@@ -14,10 +17,13 @@ const AuthForm = (props) => {
 
   const registerUser = async (e) => {
     e.preventDefault();
-    await axios.post("/users/new", { username, password });
+    await axios.post("http://localhost:5000/users/new", { username, password });
     Auth.authenticateUser(username);
-    await axios.post("/users/login", { username, password });
-    await this.props.checkAuthenticateStatus();
+    await axios.post("http://localhost:5000/users/login", {
+      username,
+      password,
+    });
+    await checkAuthenticateStatus();
     setUsername("");
     setPassword("");
   };
@@ -25,23 +31,26 @@ const AuthForm = (props) => {
   const loginUser = (e) => {
     e.preventDefault();
     axios
-      .post("/users/login", { username, password })
+      .post("http://localhost:5000/users/login", { username, password })
       .then(() => {
         Auth.authenticateUser(username);
       })
       .then(() => {
-        props.checkAuthenticateStatus();
+        debugger;
       })
       .then(() => {
-        this.setState({
-          username: "",
-          password: "",
-        });
+        checkAuthenticateStatus();
+      })
+      .then(() => {
+        setUsername("");
+        setPassword("");
+        setIsSubmitted(true);
       });
   };
 
   return (
     <Switch>
+      {isSubmitted && <Redirect to={"/sleep-logs"} />}
       <Route
         path="/auth/login"
         render={() => {
@@ -49,7 +58,7 @@ const AuthForm = (props) => {
             <Form
               username={username}
               password={password}
-              isLoggedIn={props.isLoggedIn}
+              isLoggedIn={isLoggedIn}
               loginUser={loginUser}
               registerUser={registerUser}
               handleUsernameChange={handleUsernameChange}
@@ -65,7 +74,7 @@ const AuthForm = (props) => {
             <Form
               username={username}
               password={password}
-              isLoggedIn={props.isLoggedIn}
+              isLoggedIn={isLoggedIn}
               loginUser={loginUser}
               registerUser={registerUser}
               handleUsernameChange={handleUsernameChange}

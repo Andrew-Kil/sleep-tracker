@@ -3,9 +3,9 @@ const db = require("../index");
 const authHelpers = require("../../auth/helpers");
 
 function createUser(req, res, next) {
-  const hash = authHelpers.createHash(req.body.password);
+  const hash = authHelpers.hashPassword(req.body.password);
 
-  db.none(
+  db.one(
     "INSERT INTO users (username, password_digest) VALUES (${username}, ${password})",
     { username: req.body.username, password: hash }
   )
@@ -51,9 +51,9 @@ function getUsers(req, res) {
 }
 
 module.exports = {
-  createUser: createUser,
-  logoutUser: logoutUser,
-  loginUser: loginUser,
-  isLoggedIn: isLoggedIn,
-  getUsers: getUsers,
+  createUser,
+  logoutUser,
+  loginUser,
+  isLoggedIn,
+  getUsers,
 };
