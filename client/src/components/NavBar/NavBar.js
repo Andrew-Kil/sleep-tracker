@@ -2,6 +2,7 @@ import React from "react";
 
 import {
   AppBar,
+  Button,
   Toolbar,
   Typography,
   useScrollTrigger,
@@ -14,6 +15,8 @@ import { makeStyles } from "@material-ui/core/styles";
 import KeyboardArrowUpIcon from "@material-ui/icons/KeyboardArrowUp";
 
 import { NavLink } from "react-router-dom";
+
+import { logout } from "../../utils/firebaseFunctions";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -87,9 +90,14 @@ const NavBar = (props) => {
             </Grid>
             <Grid item xs>
               <Paper className={classes.paper}>
-                <NavLink to="/auth/register" style={{ textDecoration: "none" }}>
-                  <Typography variant="h6">Register</Typography>
+                <NavLink to="/auth/signup" style={{ textDecoration: "none" }}>
+                  <Typography variant="h6">Signup</Typography>
                 </NavLink>
+              </Paper>
+            </Grid>
+            <Grid item xs>
+              <Paper className={classes.paper}>
+                <Button onClick={logout}>Log Out</Button>
               </Paper>
             </Grid>
           </Grid>
