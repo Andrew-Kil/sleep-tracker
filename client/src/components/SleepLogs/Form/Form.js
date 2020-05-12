@@ -1,7 +1,5 @@
 import React, { useState } from "react";
-
 import axios from "axios";
-
 import { makeStyles } from "@material-ui/core/styles";
 import {
   Grid,
@@ -13,6 +11,7 @@ import {
   FormControlLabel,
   FormControl,
   FormLabel,
+  Checkbox,
 } from "@material-ui/core";
 import {
   MuiPickersUtilsProvider,
@@ -34,7 +33,10 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Form = () => {
+const Form = (props) => {
+  const userID = props.userMeta.uid;
+
+  const [isPrivate, setIsPrivate] = useState(true);
   const [postDate, setPostDate] = useState(new Date());
   const [rememberDream, setRememberDream] = useState("");
   const [sleepInterrupted, setSleepInterrupted] = useState("");
@@ -48,14 +50,16 @@ const Form = () => {
     e.preventDefault();
     axios
       .post("http://localhost:5000/sleep-logs", {
+        user_id: userID,
+        is_private: isPrivate,
         post_date: postDate.toISOString().slice(0, 10),
-        remember_dream: rememberDream,
-        sleep_interrupted: sleepInterrupted,
+        remember_dream: rememberDream === "yes",
+        sleep_interrupted: sleepInterrupted === "yes",
         sleep_start: `${sleepStart}`.split(" ")[4],
         sleep_end: `${sleepEnd}`.split(" ")[4],
         notes,
       })
-      .then(() => alert("log submitted successfully!"))
+      .then(() => alert("Sleep log submitted successfully!"))
       // use react-router to route user to sleep-logs
       .catch((err) => console.log(err));
   };
@@ -141,6 +145,16 @@ const Form = () => {
                 <FormControlLabel value="yes" control={<Radio />} label="Yes" />
                 <FormControlLabel value="no" control={<Radio />} label="No" />
               </RadioGroup>
+            </FormControl>
+          </Grid>
+          <Grid item xs={12} sm={12}>
+            <FormControl component="fieldset">
+              <FormLabel component="legend">Private?</FormLabel>
+              <Checkbox
+                checked={isPrivate}
+                onChange={(e) => setIsPrivate(e.target.checked)}
+                inputProps={{ "aria-label": "primary checkbox" }}
+              />
             </FormControl>
           </Grid>
           <Grid item xs={12} sm={12}>
