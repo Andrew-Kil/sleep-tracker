@@ -5,7 +5,7 @@ import Home from "./components/Home/Home";
 import SleepLogs from "./components/SleepLogs/SleepLogs";
 import DisplayDreamThemes from "./components/DreamThemes/DisplayDreamThemes";
 import Login from "./components/Auth/Login";
-import Signup from "./components/Auth/Signup";
+import SignUp from "./components/Auth/SignUp";
 import firebase from "./firebase";
 import "./App.css";
 
@@ -51,7 +51,7 @@ const App = () => {
           path="/dream-themes"
           component={DisplayDreamThemes}></Route>
         <Route exact path="/auth/login" component={Login}></Route>
-        <Route exact path="/auth/signup" component={Signup}></Route>
+        <Route exact path="/auth/signup" component={SignUp}></Route>
       </Switch>
     </div>
   );
