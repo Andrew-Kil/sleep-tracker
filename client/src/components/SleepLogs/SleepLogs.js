@@ -3,9 +3,9 @@ import React from "react";
 import Form from "./Form/Form";
 import DisplaySleepLogs from "./DisplaySleepLogs";
 
-const SleepLogs = () => (
+const SleepLogs = (props) => (
   <>
-    <Form></Form>
+    <Form userMeta={props.userMeta}></Form>
     <DisplaySleepLogs></DisplaySleepLogs>
   </>
 );
