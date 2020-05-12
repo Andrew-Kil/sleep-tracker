@@ -26,6 +26,8 @@ const getOneSleepLog = (req, res, next) => {
 
 const createSleepLog = (req, res, next) => {
   const {
+    user_id,
+    is_private,
     post_date,
     remember_dream,
     sleep_interrupted,
@@ -34,8 +36,10 @@ const createSleepLog = (req, res, next) => {
     notes,
   } = req.body;
   db.one(
-    "INSERT INTO sleep_logs (post_date, remember_dream, sleep_interrupted, sleep_start, sleep_end, notes) VALUES (${post_date}, ${remember_dream}, ${sleep_interrupted}, ${sleep_start}, ${sleep_end}, ${notes}) RETURNING *",
+    "INSERT INTO sleep_logs (user_id, is_private, post_date, remember_dream, sleep_interrupted, sleep_start, sleep_end, notes) VALUES (${user_id}, ${is_private}, ${post_date}, ${remember_dream}, ${sleep_interrupted}, ${sleep_start}, ${sleep_end}, ${notes}) RETURNING *",
     {
+      user_id,
+      is_private,
       post_date,
       remember_dream,
       sleep_interrupted,

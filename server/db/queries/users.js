@@ -1,25 +1,5 @@
 const { db } = require("../index.js");
 
-const authHelpers = require("../../auth/helpers");
-
-const createUser = async (user) => {
-  const passwordDigest = await authHelpers.hashPassword(user.password);
-
-  const insertUserQuery = `
-      INSERT INTO users (username, password_digest) 
-        VALUES ($/username/, $/password/)
-        RETURNING *
-    `;
-
-  const newUser = await db.one(insertUserQuery, {
-    username: user.username,
-    password: passwordDigest,
-  });
-
-  delete newUser.password_digest;
-  return newUser;
-};
-
 const getUserByUsername = async (username) => {
   try {
     const user = await db.one(
@@ -40,7 +20,6 @@ const getAllUsers = async () => {
 };
 
 module.exports = {
-  createUser,
   getUserByUsername,
   getAllUsers,
 };

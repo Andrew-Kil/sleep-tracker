@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import axios from "axios";
 import { useHistory } from "react-router-dom";
 import { signUp } from "../../utils/firebaseFunctions";
 import Copyright from "./Copyright";
@@ -43,7 +44,11 @@ const Signup = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await signUp(email, password);
+      const res = await signUp(email, password);
+      await axios.post("http://localhost:5000/users/new", {
+        firebase_id: res.user.uid,
+        email,
+      });
       history.push("/");
     } catch (err) {
       console.log("ERROR ", err);
