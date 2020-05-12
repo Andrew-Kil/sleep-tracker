@@ -61,6 +61,53 @@ const NavBar = (props) => {
     window.location.reload(true);
   };
 
+  const renderNavLinks = () => {
+    if (props.user) {
+      return (
+        <>
+          <Grid item xs>
+            <Paper className={classes.paper}>
+              <NavLink to="/sleep-logs" style={{ textDecoration: "none" }}>
+                <Typography variant="h6">Sleep Logs</Typography>
+              </NavLink>
+            </Paper>
+          </Grid>
+          <Grid item xs>
+            <Paper className={classes.paper}>
+              <NavLink to="/dream-themes" style={{ textDecoration: "none" }}>
+                <Typography variant="h6">Dream Themes</Typography>
+              </NavLink>
+            </Paper>
+          </Grid>
+          <Grid item xs>
+            <Paper className={classes.paper}>
+              <Button onClick={() => handleLogout(logout)}>Log Out</Button>
+            </Paper>
+          </Grid>
+        </>
+      );
+    } else {
+      return (
+        <>
+          <Grid item xs>
+            <Paper className={classes.paper}>
+              <NavLink to="/auth/login" style={{ textDecoration: "none" }}>
+                <Typography variant="h6">Login</Typography>
+              </NavLink>
+            </Paper>
+          </Grid>
+          <Grid item xs>
+            <Paper className={classes.paper}>
+              <NavLink to="/auth/signup" style={{ textDecoration: "none" }}>
+                <Typography variant="h6">Signup</Typography>
+              </NavLink>
+            </Paper>
+          </Grid>
+        </>
+      );
+    }
+  };
+
   return (
     <div style={{ marginBottom: "50px" }}>
       <AppBar color="secondary">
@@ -73,39 +120,7 @@ const NavBar = (props) => {
                 </NavLink>
               </Paper>
             </Grid>
-            <Grid item xs>
-              <Paper className={classes.paper}>
-                <NavLink to="/sleep-logs" style={{ textDecoration: "none" }}>
-                  <Typography variant="h6">Sleep Logs</Typography>
-                </NavLink>
-              </Paper>
-            </Grid>
-            <Grid item xs>
-              <Paper className={classes.paper}>
-                <NavLink to="/dream-themes" style={{ textDecoration: "none" }}>
-                  <Typography variant="h6">Dream Themes</Typography>
-                </NavLink>
-              </Paper>
-            </Grid>
-            <Grid item xs>
-              <Paper className={classes.paper}>
-                <NavLink to="/auth/login" style={{ textDecoration: "none" }}>
-                  <Typography variant="h6">Login</Typography>
-                </NavLink>
-              </Paper>
-            </Grid>
-            <Grid item xs>
-              <Paper className={classes.paper}>
-                <NavLink to="/auth/signup" style={{ textDecoration: "none" }}>
-                  <Typography variant="h6">Signup</Typography>
-                </NavLink>
-              </Paper>
-            </Grid>
-            <Grid item xs>
-              <Paper className={classes.paper}>
-                <Button onClick={() => handleLogout(logout)}>Log Out</Button>
-              </Paper>
-            </Grid>
+            {renderNavLinks()}
           </Grid>
         </Toolbar>
       </AppBar>
