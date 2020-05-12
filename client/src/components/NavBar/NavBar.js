@@ -99,7 +99,7 @@ const NavBar = (props) => {
           <Grid item xs>
             <Paper className={classes.paper}>
               <NavLink to="/auth/signup" style={{ textDecoration: "none" }}>
-                <Typography variant="h6">Signup</Typography>
+                <Typography variant="h6">Sign Up</Typography>
               </NavLink>
             </Paper>
           </Grid>

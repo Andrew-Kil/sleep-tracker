@@ -9,7 +9,7 @@ router.post("/signup", async (req, res, next) => {
     const newUser = await usersQueries.createUser(user);
     res.send({
       payload: newUser,
-      msg: "New user signup success",
+      msg: "New user sign up success",
       err: false,
     });
   } catch (err) {

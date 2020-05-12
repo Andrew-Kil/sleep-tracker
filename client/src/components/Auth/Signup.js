@@ -34,7 +34,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Signup = () => {
+const SignUp = () => {
   const classes = useStyles();
 
   const [email, setEmail] = useState("");
@@ -103,10 +103,10 @@ const Signup = () => {
             className={classes.submit}>
             Sign Up
           </Button>
-          <Grid container justify="flex-end">
+          <Grid container justify="center">
             <Grid item>
               <Link href="/auth/login" variant="body2">
-                Already have an account? Sign in
+                Already have an account? Log in
               </Link>
             </Grid>
           </Grid>
@@ -119,4 +119,4 @@ const Signup = () => {
   );
 };
 
-export default Signup;
+export default SignUp;
