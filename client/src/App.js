@@ -34,7 +34,7 @@ const App = () => {
 
   return (
     <div className="App">
-      <NavBar></NavBar>
+      <NavBar user={userMeta.uid}></NavBar>
       <Switch>
         <Route
           exact
