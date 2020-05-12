@@ -55,6 +55,12 @@ const ScrollTop = (props) => {
 
 const NavBar = (props) => {
   const classes = useStyles();
+
+  const handleLogout = (logout) => {
+    logout();
+    window.location.reload(true);
+  };
+
   return (
     <div style={{ marginBottom: "50px" }}>
       <AppBar color="secondary">
@@ -97,7 +103,7 @@ const NavBar = (props) => {
             </Grid>
             <Grid item xs>
               <Paper className={classes.paper}>
-                <Button onClick={logout}>Log Out</Button>
+                <Button onClick={() => handleLogout(logout)}>Log Out</Button>
               </Paper>
             </Grid>
           </Grid>
