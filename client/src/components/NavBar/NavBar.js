@@ -8,8 +8,8 @@ import {
   useScrollTrigger,
   Fab,
   Zoom,
-  Paper,
   Grid,
+  IconButton,
 } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import KeyboardArrowUpIcon from "@material-ui/icons/KeyboardArrowUp";
@@ -54,8 +54,6 @@ const ScrollTop = (props) => {
 };
 
 const NavBar = (props) => {
-  const classes = useStyles();
-
   const handleLogout = (logout) => {
     logout();
     window.location.reload(true);
@@ -66,23 +64,43 @@ const NavBar = (props) => {
       return (
         <>
           <Grid item xs>
-            <Paper className={classes.paper}>
-              <NavLink to="/sleep-logs" style={{ textDecoration: "none" }}>
+            <Button>
+              <NavLink
+                to="/sleep-logs"
+                style={{
+                  textDecoration: "none",
+                  color: "white",
+                  textTransform: "capitalize",
+                }}>
                 <Typography variant="h6">Sleep Logs</Typography>
               </NavLink>
-            </Paper>
+            </Button>
           </Grid>
           <Grid item xs>
-            <Paper className={classes.paper}>
-              <NavLink to="/dream-themes" style={{ textDecoration: "none" }}>
+            <Button>
+              <NavLink
+                to="/dream-themes"
+                style={{
+                  textDecoration: "none",
+                  color: "white",
+                  textTransform: "capitalize",
+                }}>
                 <Typography variant="h6">Dream Themes</Typography>
               </NavLink>
-            </Paper>
+            </Button>
           </Grid>
           <Grid item xs>
-            <Paper className={classes.paper}>
-              <Button onClick={() => handleLogout(logout)}>Log Out</Button>
-            </Paper>
+            <Button onClick={() => handleLogout(logout)}>
+              <Typography
+                variant="h6"
+                style={{
+                  textDecoration: "none",
+                  color: "white",
+                  textTransform: "capitalize",
+                }}>
+                Log Out
+              </Typography>
+            </Button>
           </Grid>
         </>
       );
@@ -90,18 +108,30 @@ const NavBar = (props) => {
       return (
         <>
           <Grid item xs>
-            <Paper className={classes.paper}>
-              <NavLink to="/auth/login" style={{ textDecoration: "none" }}>
+            <Button>
+              <NavLink
+                to="/auth/login"
+                style={{
+                  textDecoration: "none",
+                  color: "white",
+                  textTransform: "capitalize",
+                }}>
                 <Typography variant="h6">Login</Typography>
               </NavLink>
-            </Paper>
+            </Button>
           </Grid>
           <Grid item xs>
-            <Paper className={classes.paper}>
-              <NavLink to="/auth/signup" style={{ textDecoration: "none" }}>
+            <Button>
+              <NavLink
+                to="/auth/signup"
+                style={{
+                  textDecoration: "none",
+                  color: "white",
+                  textTransform: "capitalize",
+                }}>
                 <Typography variant="h6">Sign Up</Typography>
               </NavLink>
-            </Paper>
+            </Button>
           </Grid>
         </>
       );
@@ -109,16 +139,22 @@ const NavBar = (props) => {
   };
 
   return (
-    <div style={{ marginBottom: "50px" }}>
-      <AppBar color="secondary">
+    <div>
+      <AppBar position="static" color="secondary">
         <Toolbar>
           <Grid container spacing={6}>
             <Grid item xs>
-              <Paper className={classes.paper}>
-                <NavLink to="/" style={{ textDecoration: "none" }}>
+              <Button>
+                <NavLink
+                  to="/"
+                  style={{
+                    textDecoration: "none",
+                    color: "white",
+                    textTransform: "capitalize",
+                  }}>
                   <Typography variant="h6">Home</Typography>
                 </NavLink>
-              </Paper>
+              </Button>
             </Grid>
             {renderNavLinks()}
           </Grid>
