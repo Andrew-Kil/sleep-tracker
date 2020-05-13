@@ -1,4 +1,22 @@
-const { db } = require("../index.js");
+const { db } = require("../index");
+
+const createUser = async (req, res, next) => {
+  try {
+    const { firebase_id, email } = req.body;
+    await db.one(
+      "INSERT INTO users (firebase_id, email) VALUES (${firebase_id}, ${email}) RETURNING *",
+      {
+        firebase_id,
+        email,
+      }
+    );
+    res.json({
+      message: "Created new user",
+    });
+  } catch (err) {
+    next(err);
+  }
+};
 
 const getUserByUsername = async (username) => {
   try {
@@ -20,6 +38,7 @@ const getAllUsers = async () => {
 };
 
 module.exports = {
+  createUser,
   getUserByUsername,
   getAllUsers,
 };
