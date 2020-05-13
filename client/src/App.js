@@ -5,7 +5,7 @@ import Home from "./components/Home/Home";
 import SleepLogs from "./components/SleepLogs/SleepLogs";
 import DisplayDreamThemes from "./components/DreamThemes/DisplayDreamThemes";
 import Login from "./components/Auth/Login";
-import SignUp from "./components/Auth/SignUp";
+import SignUp from "./components/Auth/Signup";
 import firebase from "./firebase";
 import "./App.css";
 
