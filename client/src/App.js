@@ -28,10 +28,6 @@ const App = () => {
     };
   }, []);
 
-  useEffect(() => {
-    console.log(userMeta);
-  });
-
   return (
     <div className="App">
       <NavBar user={userMeta.uid}></NavBar>
