@@ -3,6 +3,7 @@ const router = express.Router();
 
 const {
   getAllSleepLogs,
+  getAllPublicSleepLogs,
   getOneSleepLog,
   getAllSleepLogsForUser,
   createSleepLog,
@@ -11,6 +12,7 @@ const {
 } = require("../db/queries/sleepLogs.js");
 
 router.get("/", getAllSleepLogs);
+router.get("/public", getAllPublicSleepLogs);
 router.get("/:id", getOneSleepLog);
 router.get("/user/:id", getAllSleepLogsForUser);
 router.post("/", createSleepLog);
