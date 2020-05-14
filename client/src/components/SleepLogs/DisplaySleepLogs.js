@@ -14,7 +14,9 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const DisplaySleepLogs = () => {
+const DisplaySleepLogs = (props) => {
+  const userID = props.userMeta.uid;
+
   const [sleepLogs, setSleepLogs] = useState();
   const [isLoading, setIsLoading] = useState(false);
 
@@ -23,7 +25,9 @@ const DisplaySleepLogs = () => {
   useEffect(() => {
     const fetchData = async () => {
       setIsLoading(true);
-      const result = await axios("http://localhost:5000/sleep-logs");
+      const result = await axios(
+        `http://localhost:5000/sleep-logs/user/${userID}`
+      );
       setSleepLogs(result.data);
       setIsLoading(false);
     };

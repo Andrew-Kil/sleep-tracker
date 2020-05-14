@@ -24,6 +24,21 @@ const getOneSleepLog = (req, res, next) => {
     .catch((err) => next(err));
 };
 
+const getAllSleepLogsForUser = (req, res, next) => {
+  db.any(
+    "SELECT * FROM sleep_logs WHERE sleep_logs.user_id = $1",
+    req.params.id
+  )
+    .then((data) => {
+      res.status(200).json({
+        status: "Success",
+        data,
+        messsage: "Received all sleep logs for User",
+      });
+    })
+    .catch((err) => next(err));
+};
+
 const createSleepLog = (req, res, next) => {
   const {
     user_id,
@@ -72,6 +87,7 @@ const deleteSleepLog = (req, res, next) => {
 module.exports = {
   getAllSleepLogs,
   getOneSleepLog,
+  getAllSleepLogsForUser,
   createSleepLog,
   deleteSleepLog,
 };
