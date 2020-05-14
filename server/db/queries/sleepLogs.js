@@ -12,6 +12,18 @@ const getAllSleepLogs = (req, res, next) => {
     .catch((err) => next(err));
 };
 
+const getAllPublicSleepLogs = (req, res, next) => {
+  db.any("SELECT * FROM sleep_logs WHERE is_private = false")
+    .then((data) => {
+      res.status(200).json({
+        status: "Success",
+        data,
+        message: "Received all public sleep logs",
+      });
+    })
+    .catch((err) => next(err));
+};
+
 const getOneSleepLog = (req, res, next) => {
   db.one("SELECT * FROM sleep_logs WHERE sleep_logs.id = $1", +req.params.id)
     .then((data) => {
@@ -86,6 +98,7 @@ const deleteSleepLog = (req, res, next) => {
 
 module.exports = {
   getAllSleepLogs,
+  getAllPublicSleepLogs,
   getOneSleepLog,
   getAllSleepLogsForUser,
   createSleepLog,

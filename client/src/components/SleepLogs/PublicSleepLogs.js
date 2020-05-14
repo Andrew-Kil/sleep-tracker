@@ -5,8 +5,6 @@ import { makeStyles } from "@material-ui/core/styles";
 import { Grid } from "@material-ui/core";
 import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
-import IconButton from "@material-ui/core/IconButton";
-import DeleteIcon from "@material-ui/icons/Delete";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -14,10 +12,8 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const DisplaySleepLogs = (props) => {
-  const userID = props.userMeta.uid;
-
-  const [sleepLogs, setSleepLogs] = useState();
+const PublicSleepLogs = () => {
+  const [publicSleepLogs, setPublicSleepLogs] = useState();
   const [isLoading, setIsLoading] = useState(false);
 
   const classes = useStyles();
@@ -33,36 +29,27 @@ const DisplaySleepLogs = (props) => {
   useEffect(() => {
     const fetchData = async () => {
       setIsLoading(true);
-      const result = await axios(
-        `http://localhost:5000/sleep-logs/user/${userID}`
-      );
-      setSleepLogs(result.data);
+      const result = await axios("http://localhost:5000/sleep-logs/public");
+      setPublicSleepLogs(result.data);
       setIsLoading(false);
     };
     fetchData();
   }, []);
 
-  const handleDelete = (ID) => {
-    axios
-      .delete(`http://localhost:5000/sleep-logs/${ID}`)
-      .catch((err) => console.error(err));
-    window.location.reload(true);
-  };
-
   return (
     <div>
-      <h2>Sleep Logs</h2>
+      <h2>Public Sleep Logs</h2>
       {isLoading ? (
         <div>Loading ...</div>
       ) : (
-        sleepLogs &&
-        sleepLogs.data
+        publicSleepLogs &&
+        publicSleepLogs.data
           .sort((a, b) => {
             const c = convertISODate(a.post_date);
             const d = convertISODate(b.post_date);
             return c < d ? 1 : c > d ? -1 : 0;
           })
-          .map((sleepLog, i) => (
+          .map((publicSleepLog, i) => (
             <div key={i}>
               <Grid
                 container
@@ -73,30 +60,25 @@ const DisplaySleepLogs = (props) => {
                 <Grid item xs={6} style={{ minWidth: "75vw", margin: "25px" }}>
                   <Paper elevation={3} className={classes.root} key={i}>
                     <Typography variant="h5" component="h3">
-                      {sleepLog.post_date.slice(0, 10)}
+                      {publicSleepLog.post_date.slice(0, 10)}
                     </Typography>
                     <Typography component="p">
                       remember dream:{" "}
-                      {sleepLog.remember_dream ? "true" : "false"}
+                      {publicSleepLog.remember_dream ? "true" : "false"}
                     </Typography>
                     <Typography component="p">
                       interrupted sleep:{" "}
-                      {sleepLog.interrupted_sleep ? "true" : "false"}
+                      {publicSleepLog.interrupted_sleep ? "true" : "false"}
                     </Typography>
                     <Typography component="p">
-                      sleep start: {sleepLog.sleep_start}
+                      sleep start: {publicSleepLog.sleep_start}
                     </Typography>
                     <Typography component="p">
-                      sleep end:{sleepLog.sleep_end}
+                      sleep end:{publicSleepLog.sleep_end}
                     </Typography>
                     <Typography component="p">
-                      notes: {sleepLog.notes}
+                      notes: {publicSleepLog.notes}
                     </Typography>
-                    <IconButton
-                      aria-label="delete"
-                      onClick={() => handleDelete(sleepLog.id)}>
-                      <DeleteIcon fontSize="small" />
-                    </IconButton>
                   </Paper>
                 </Grid>
               </Grid>
@@ -107,4 +89,4 @@ const DisplaySleepLogs = (props) => {
   );
 };
 
-export default DisplaySleepLogs;
+export default PublicSleepLogs;
