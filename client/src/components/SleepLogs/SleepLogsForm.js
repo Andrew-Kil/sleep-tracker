@@ -73,7 +73,7 @@ const Form = (props) => {
           padding: "20px",
         }}>
         <Typography variant="h6" gutterBottom>
-          Sleep Log Form
+          Add Sleep Log
         </Typography>
         <Grid container spacing={3}>
           <MuiPickersUtilsProvider utils={DateFnsUtils}>

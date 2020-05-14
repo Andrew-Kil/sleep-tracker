@@ -6,7 +6,7 @@ import DisplaySleepLogs from "./DisplaySleepLogs";
 const SleepLogs = (props) => (
   <>
     <SleepLogsForm userMeta={props.userMeta}></SleepLogsForm>
-    <DisplaySleepLogs></DisplaySleepLogs>
+    <DisplaySleepLogs userMeta={props.userMeta}></DisplaySleepLogs>
   </>
 );
 
