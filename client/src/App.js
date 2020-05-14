@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Switch, Route } from "react-router-dom";
 import NavBar from "./components/NavBar/NavBar";
 import Home from "./components/Home/Home";
+import PublicSleepLogs from "./components/SleepLogs/PublicSleepLogs";
 import SleepLogs from "./components/SleepLogs/SleepLogs";
 import DisplayDreamThemes from "./components/DreamThemes/DisplayDreamThemes";
 import Login from "./components/Auth/Login";
@@ -42,6 +43,10 @@ const App = () => {
           render={(props) => (
             <SleepLogs {...props} userMeta={userMeta} />
           )}></Route>
+        <Route
+          exact
+          path="/sleep-logs/public"
+          render={(props) => <PublicSleepLogs {...props} />}></Route>
         <Route
           exact
           path="/dream-themes"
