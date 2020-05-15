@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useContext } from "react";
 import { Switch, Route } from "react-router-dom";
 import NavBar from "./components/NavBar/NavBar";
 import Home from "./components/Home/Home";
@@ -9,10 +9,11 @@ import Profile from "./components/Profile/Profile";
 import Login from "./components/Auth/Login";
 import SignUp from "./components/Auth/Signup";
 import firebase from "./firebase";
+import { UserMetaContext } from "../src/context/Store";
 import "./App.css";
 
 const App = () => {
-  const [userMeta, setUserMeta] = useState({});
+  const [setUserMeta] = useContext(UserMetaContext);
 
   useEffect(() => {
     const stopListening = firebase.auth().onAuthStateChanged((user) => {
@@ -32,18 +33,10 @@ const App = () => {
 
   return (
     <div className="App">
-      <NavBar user={userMeta.uid}></NavBar>
+      <NavBar></NavBar>
       <Switch>
-        <Route
-          exact
-          path="/"
-          render={(props) => <Home {...props} userMeta={userMeta} />}></Route>
-        <Route
-          exact
-          path="/sleep-logs"
-          render={(props) => (
-            <SleepLogs {...props} userMeta={userMeta} />
-          )}></Route>
+        <Route exact path="/" component={Home}></Route>
+        <Route exact path="/sleep-logs" component={SleepLogs}></Route>
         <Route
           exact
           path="/sleep-logs/public"
@@ -52,12 +45,7 @@ const App = () => {
           exact
           path="/dream-themes"
           component={DisplayDreamThemes}></Route>
-        <Route
-          exact
-          path="/profile"
-          render={(props) => (
-            <Profile {...props} userMeta={userMeta} />
-          )}></Route>
+        <Route exact path="/profile" component={Profile}></Route>
         <Route exact path="/auth/login" component={Login}></Route>
         <Route exact path="/auth/signup" component={SignUp}></Route>
       </Switch>
