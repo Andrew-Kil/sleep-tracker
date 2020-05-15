@@ -5,6 +5,7 @@ import Home from "./components/Home/Home";
 import PublicSleepLogs from "./components/SleepLogs/PublicSleepLogs";
 import SleepLogs from "./components/SleepLogs/SleepLogs";
 import DisplayDreamThemes from "./components/DreamThemes/DisplayDreamThemes";
+import Profile from "./components/Profile/Profile";
 import Login from "./components/Auth/Login";
 import SignUp from "./components/Auth/Signup";
 import firebase from "./firebase";
@@ -46,11 +47,17 @@ const App = () => {
         <Route
           exact
           path="/sleep-logs/public"
-          render={(props) => <PublicSleepLogs {...props} />}></Route>
+          component={PublicSleepLogs}></Route>
         <Route
           exact
           path="/dream-themes"
           component={DisplayDreamThemes}></Route>
+        <Route
+          exact
+          path="/profile"
+          render={(props) => (
+            <Profile {...props} userMeta={userMeta} />
+          )}></Route>
         <Route exact path="/auth/login" component={Login}></Route>
         <Route exact path="/auth/signup" component={SignUp}></Route>
       </Switch>
