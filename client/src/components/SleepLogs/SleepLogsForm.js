@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import axios from "axios";
 import { makeStyles } from "@material-ui/core/styles";
 import {
@@ -20,6 +20,8 @@ import {
 } from "@material-ui/pickers";
 import DateFnsUtils from "@date-io/date-fns";
 
+import { UserMetaContext } from "../../context/Store";
+
 const useStyles = makeStyles((theme) => ({
   layout: {
     width: "auto",
@@ -33,8 +35,10 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Form = (props) => {
-  const userID = props.userMeta.uid;
+const Form = () => {
+  const [userMeta] = useContext(UserMetaContext);
+
+  const userID = userMeta.uid;
 
   const [isPrivate, setIsPrivate] = useState(true);
   const [postDate, setPostDate] = useState(new Date());

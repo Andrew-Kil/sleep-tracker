@@ -1,8 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
 
-const Profile = (props) => {
-  const userID = props.userMeta.uid;
+import { UserMetaContext } from "../../context/Store";
+
+const Profile = () => {
+  const [userMeta] = useContext(UserMetaContext);
+
+  const userID = userMeta.uid;
 
   const [profileInfo, setProfileInfo] = useState();
   const [isLoading, setIsLoading] = useState(false);

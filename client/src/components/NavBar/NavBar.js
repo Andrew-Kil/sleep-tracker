@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 
 import {
   AppBar,
@@ -16,6 +16,8 @@ import KeyboardArrowUpIcon from "@material-ui/icons/KeyboardArrowUp";
 import { NavLink } from "react-router-dom";
 
 import { logout } from "../../utils/firebaseFunctions";
+
+import { UserMetaContext } from "../../context/Store";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -53,13 +55,15 @@ const ScrollTop = (props) => {
 };
 
 const NavBar = (props) => {
+  const [userMeta] = useContext(UserMetaContext);
+
   const handleLogout = (logout) => {
     logout();
     window.location.reload(true);
   };
 
   const renderNavLinks = () => {
-    if (props.user) {
+    if (userMeta.uid) {
       return (
         <>
           <Grid item xs>
