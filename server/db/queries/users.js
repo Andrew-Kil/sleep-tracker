@@ -18,17 +18,19 @@ const createUser = async (req, res, next) => {
   }
 };
 
-const getUserByUsername = async (username) => {
+const getUserByFirebaseID = async (req, res, next) => {
   try {
-    const user = await db.one(
-      "SELECT * FROM users WHERE username = $1",
-      username
-    );
-    return user;
+    await db
+      .any("SELECT * FROM users WHERE firebase_id = $1", req.params.id)
+      .then((data) => {
+        res.status(200).json({
+          status: "Success",
+          data,
+          message: "Received info about user",
+        });
+      });
   } catch (err) {
-    if (err.message === "No data returned from the query") {
-      return null;
-    }
+    next(err);
   }
 };
 
@@ -39,6 +41,6 @@ const getAllUsers = async () => {
 
 module.exports = {
   createUser,
-  getUserByUsername,
+  getUserByFirebaseID,
   getAllUsers,
 };

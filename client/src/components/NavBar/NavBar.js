@@ -89,6 +89,19 @@ const NavBar = (props) => {
             </Button>
           </Grid>
           <Grid item xs>
+            <Button>
+              <NavLink
+                to="/profile"
+                style={{
+                  textDecoration: "none",
+                  color: "white",
+                  textTransform: "capitalize",
+                }}>
+                <Typography variant="h6">Profile</Typography>
+              </NavLink>
+            </Button>
+          </Grid>
+          <Grid item xs>
             <Button onClick={() => handleLogout(logout)}>
               <Typography
                 variant="h6"
