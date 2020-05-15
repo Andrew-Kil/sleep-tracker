@@ -1,19 +1,18 @@
 import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
 
-import { UserMetaContext } from "../../context/Store";
+import { UserContext } from "../../context/Store";
 
 const Profile = () => {
-  const [userMeta] = useContext(UserMetaContext);
+  const { userMeta } = useContext(UserContext);
 
-  const userID = userMeta.uid;
+  const userID = userMeta && userMeta.uid;
 
   const [profileInfo, setProfileInfo] = useState();
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
-      console.log(userID);
       setIsLoading(true);
       const result = await axios(
         `http://localhost:5000/users/profile/${userID}`
@@ -21,8 +20,10 @@ const Profile = () => {
       setProfileInfo(result.data.data[0]);
       setIsLoading(false);
     };
-    fetchData();
-  }, []);
+    if (userID) {
+      fetchData();
+    }
+  }, [userID]);
 
   return (
     <>

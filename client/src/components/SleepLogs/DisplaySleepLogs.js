@@ -8,7 +8,7 @@ import Typography from "@material-ui/core/Typography";
 import IconButton from "@material-ui/core/IconButton";
 import DeleteIcon from "@material-ui/icons/Delete";
 
-import { UserMetaContext } from "../../context/Store";
+import { UserContext } from "../../context/Store";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -17,9 +17,9 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const DisplaySleepLogs = () => {
-  const [userMeta] = useContext(UserMetaContext);
+  const { userMeta } = useContext(UserContext);
 
-  const userID = userMeta.uid;
+  const userID = userMeta && userMeta.uid;
 
   const [sleepLogs, setSleepLogs] = useState();
   const [isLoading, setIsLoading] = useState(false);
@@ -44,7 +44,7 @@ const DisplaySleepLogs = () => {
       setIsLoading(false);
     };
     fetchData();
-  }, []);
+  }, [userID]);
 
   const handleDelete = (ID) => {
     axios

@@ -1,15 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, createContext, useMemo } from "react";
 
-export const UserMetaContext = React.createContext({});
+export const UserContext = createContext(null);
 
 const Store = ({ children }) => {
-  const [userMeta, setUserMeta] = useState({});
+  const [userMeta, setUserMeta] = useState(null);
 
-  return (
-    <UserMetaContext.Provider value={[userMeta, setUserMeta]}>
-      {children}
-    </UserMetaContext.Provider>
-  );
+  const value = useMemo(() => ({ userMeta, setUserMeta }), [
+    userMeta,
+    setUserMeta,
+  ]);
+
+  return <UserContext.Provider value={value}>{children}</UserContext.Provider>;
 };
 
 export default Store;

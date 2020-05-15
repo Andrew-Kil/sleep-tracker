@@ -9,18 +9,17 @@ import Profile from "./components/Profile/Profile";
 import Login from "./components/Auth/Login";
 import SignUp from "./components/Auth/Signup";
 import firebase from "./firebase";
-import { UserMetaContext } from "../src/context/Store";
+import { UserContext } from "../src/context/Store";
 import "./App.css";
 
 const App = () => {
-  const [setUserMeta] = useContext(UserMetaContext);
+  const { setUserMeta } = useContext(UserContext);
 
   useEffect(() => {
     const stopListening = firebase.auth().onAuthStateChanged((user) => {
       if (user) {
         const { email, uid } = user;
         const lastLogin = user.metadata.lastSignInTime;
-
         setUserMeta({ email, uid, lastLogin });
       } else {
         console.log("User is not logged in");
@@ -29,7 +28,7 @@ const App = () => {
     return () => {
       stopListening();
     };
-  }, []);
+  }, [setUserMeta]);
 
   return (
     <div className="App">
