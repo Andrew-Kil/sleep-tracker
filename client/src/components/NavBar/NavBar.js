@@ -17,7 +17,7 @@ import { NavLink } from "react-router-dom";
 
 import { logout } from "../../utils/firebaseFunctions";
 
-import { UserMetaContext } from "../../context/Store";
+import { UserContext } from "../../context/Store";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -55,7 +55,7 @@ const ScrollTop = (props) => {
 };
 
 const NavBar = (props) => {
-  const [userMeta] = useContext(UserMetaContext);
+  const { userMeta } = useContext(UserContext);
 
   const handleLogout = (logout) => {
     logout();
@@ -63,7 +63,7 @@ const NavBar = (props) => {
   };
 
   const renderNavLinks = () => {
-    if (userMeta.uid) {
+    if (userMeta && userMeta.uid) {
       return (
         <>
           <Grid item xs>

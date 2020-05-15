@@ -2,14 +2,14 @@ import React, { useContext } from "react";
 import Link from "@material-ui/core/Link";
 import sloth from "../../assets/sloth.png";
 
-import { UserMetaContext } from "../../context/Store";
+import { UserContext } from "../../context/Store";
 
 const Home = () => {
-  const [userMeta] = useContext(UserMetaContext);
+  const { userMeta } = useContext(UserContext);
   return (
     <>
       <h1>Sleep Tracker</h1>
-      {!userMeta.email ? (
+      {!userMeta ? (
         <div>
           Please{" "}
           <Link href="auth/login" variant="body2">

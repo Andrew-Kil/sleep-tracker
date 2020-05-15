@@ -20,7 +20,7 @@ import {
 } from "@material-ui/pickers";
 import DateFnsUtils from "@date-io/date-fns";
 
-import { UserMetaContext } from "../../context/Store";
+import { UserContext } from "../../context/Store";
 
 const useStyles = makeStyles((theme) => ({
   layout: {
@@ -36,9 +36,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Form = () => {
-  const [userMeta] = useContext(UserMetaContext);
-
-  const userID = userMeta.uid;
+  const { userMeta } = useContext(UserContext);
 
   const [isPrivate, setIsPrivate] = useState(true);
   const [postDate, setPostDate] = useState(new Date());
@@ -52,6 +50,7 @@ const Form = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    const userID = userMeta && userMeta.uid;
     axios
       .post("http://localhost:5000/sleep-logs", {
         user_id: userID,
