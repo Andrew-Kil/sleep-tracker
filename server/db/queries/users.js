@@ -18,6 +18,36 @@ const createUser = async (req, res, next) => {
   }
 };
 
+const updateUser = async (req, res, next) => {
+  try {
+    console.log(req.body);
+    const keys = Object.keys(req.body);
+    const queryString = keys
+      .reduce((acc, curr) => {
+        return (acc += curr + "=${" + curr + "}, ");
+      }, "")
+      .slice(0, -2);
+
+    await db
+      .none(
+        "UPDATE users SET " +
+          queryString +
+          " WHERE firebase_id=" +
+          req.params.id,
+        req.body
+      )
+      .then((data) => {
+        res.status(200).json({
+          status: "Success",
+          data,
+          message: "User profile updated",
+        });
+      });
+  } catch (err) {
+    next(err);
+  }
+};
+
 const getUserByFirebaseID = async (req, res, next) => {
   try {
     await db
@@ -41,6 +71,7 @@ const getAllUsers = async () => {
 
 module.exports = {
   createUser,
+  updateUser,
   getUserByFirebaseID,
   getAllUsers,
 };

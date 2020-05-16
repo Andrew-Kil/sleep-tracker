@@ -7,7 +7,14 @@ CREATE TABLE users
 (
     id SERIAL PRIMARY KEY,
     firebase_id VARCHAR UNIQUE NOT NULL,
-    email VARCHAR UNIQUE NOT NULL
+    email VARCHAR UNIQUE NOT NULL,
+    first_name VARCHAR,
+    last_name VARCHAR,
+    date_of_birth DATE,
+    occupation VARCHAR,
+    location VARCHAR,
+    hobbies TEXT,
+    pets TEXT
 );
 
 CREATE TABLE dream_themes
@@ -31,14 +38,9 @@ CREATE TABLE sleep_logs
 );
 
 INSERT INTO users
-    (firebase_id, email)
+    (firebase_id, email, first_name, last_name, date_of_birth, occupation, location, hobbies, pets)
 VALUES
-    ('a1', 'abc123@mail.com'),
-    ('b2', 'password@mail.com'),
-    ('c3', 'hello1@mail.com'),
-    ('d4', 'mary123@mail.com'),
-    ('e5', 'sallyspassword@mail.com'),
-    ('f6', 'test@mail.com');
+    ('Z0SrKJHeG7VqvpAwHG1jUWs866M2', 'rob@rob.com', 'rob', 'pinelli', '2020-05-12', 'cool guy', 'ny', 'aram', 'kittens');
 
 INSERT INTO dream_themes
     (theme, info)
@@ -59,13 +61,6 @@ VALUES
 INSERT INTO sleep_logs
     (user_id, is_private, post_date, remember_dream, sleep_interrupted, sleep_start, sleep_end, notes)
 VALUES
-    ('a1', TRUE, '2020-02-05', TRUE, TRUE, '08:00:00', '12:00:00', 'slept in bed. had dream about flying. woke up once.'),
-    ('b2', FALSE, '2020-04-11', TRUE, TRUE, '19:00:00', '04:00:00', NULL),
-    ('c3', TRUE, '2020-03-03', FALSE, TRUE, '22:00:00', '09:00:00', 'had coffee before bed'),
-    ('d4', TRUE, '2020-01-01', FALSE, FALSE, '23:00:00', '09:00:00', 'slept in airbnb'),
-    ('e5', FALSE, '2020-02-22', TRUE, FALSE, '19:30:00', '12:00:00', NULL),
-    ('f6', FALSE, '2020-04-26', TRUE, TRUE, '19:00:00', '04:00:00', NULL),
-    ('a1', FALSE, '2020-04-26', 'yes', 'no', '19:00:00', '04:00:00', NULL),
-    ('b2', FALSE, '2020-04-26', 'no', 'yes', '19:00:00', '04:00:00', NULL);
+    ('Z0SrKJHeG7VqvpAwHG1jUWs866M2', TRUE, '2020-02-05', TRUE, TRUE, '08:00:00', '12:00:00', 'slept in bed. had dream about flying. woke up once.');
 
   
