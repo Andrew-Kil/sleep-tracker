@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { useHistory } from "react-router-dom";
 
 import { makeStyles } from "@material-ui/core/styles";
-import { Grid } from "@material-ui/core";
+import { Grid, Button } from "@material-ui/core";
 import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
 
@@ -13,6 +14,8 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const PublicSleepLogs = () => {
+  const history = useHistory();
+
   const [publicSleepLogs, setPublicSleepLogs] = useState();
   const [isLoading, setIsLoading] = useState(false);
 
@@ -39,6 +42,13 @@ const PublicSleepLogs = () => {
   return (
     <div>
       <h2>Public Sleep Logs</h2>
+      <Button
+        variant="contained"
+        color="secondary"
+        style={{ marginBottom: "50px" }}
+        onClick={() => history.push("/sleep-logs")}>
+        Go Back
+      </Button>
       {isLoading ? (
         <div>Loading ...</div>
       ) : (
