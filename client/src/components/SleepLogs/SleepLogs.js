@@ -1,17 +1,38 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import SleepLogsForm from "./SleepLogsForm";
 import DisplaySleepLogs from "./DisplaySleepLogs";
 import { Button } from "@material-ui/core";
 
-const SleepLogs = (props) => {
+const SleepLogs = () => {
   return (
     <>
-      <Button>
-        <NavLink to="/sleep-logs/public"> View public sleep logs</NavLink>
-      </Button>
-      <SleepLogsForm userMeta={props.userMeta}></SleepLogsForm>
-      <DisplaySleepLogs userMeta={props.userMeta}></DisplaySleepLogs>
+      <div>
+        <Button variant="contained" color="primary">
+          <NavLink
+            to="/sleep-logs/form"
+            style={{
+              textDecoration: "none",
+              color: "white",
+              textTransform: "capitalize",
+            }}>
+            Add Sleep Log
+          </NavLink>
+        </Button>
+      </div>
+      <div style={{ margin: "20px" }}>
+        <Button variant="contained" color="secondary">
+          <NavLink
+            to="/sleep-logs/public"
+            style={{
+              textDecoration: "none",
+              color: "white",
+              textTransform: "capitalize",
+            }}>
+            View public sleep logs
+          </NavLink>
+        </Button>
+      </div>
+      <DisplaySleepLogs></DisplaySleepLogs>
     </>
   );
 };
