@@ -8,7 +8,7 @@ import Typography from "@material-ui/core/Typography";
 import IconButton from "@material-ui/core/IconButton";
 import DeleteIcon from "@material-ui/icons/Delete";
 
-import { UserContext } from "../../context/Store";
+import { UserAuthContext } from "../../context/UserAuthProvider";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -17,7 +17,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const DisplaySleepLogs = () => {
-  const { userMeta } = useContext(UserContext);
+  const { userMeta } = useContext(UserAuthContext);
 
   const userID = userMeta && userMeta.uid;
 
