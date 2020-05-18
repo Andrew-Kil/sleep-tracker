@@ -1,10 +1,10 @@
 import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
 
-import { UserContext } from "../../context/Store";
+import { UserAuthContext } from "../../context/UserAuthProvider";
 
 const Profile = () => {
-  const { userMeta } = useContext(UserContext);
+  const { userMeta } = useContext(UserAuthContext);
 
   const userID = userMeta && userMeta.uid;
 

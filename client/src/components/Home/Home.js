@@ -2,10 +2,10 @@ import React, { useContext } from "react";
 import Link from "@material-ui/core/Link";
 import sloth from "../../assets/sloth.png";
 
-import { UserContext } from "../../context/Store";
+import { UserAuthContext } from "../../context/UserAuthProvider";
 
 const Home = () => {
-  const { userMeta } = useContext(UserContext);
+  const { userMeta } = useContext(UserAuthContext);
   return (
     <>
       <h1>Sleep Tracker</h1>

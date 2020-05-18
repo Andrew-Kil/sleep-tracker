@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter } from "react-router-dom";
-import Store from "./context/Store";
+import UserAuthProvider from "./context/UserAuthProvider";
 import App from "./App";
 
 import { MuiThemeProvider } from "@material-ui/core/styles";
@@ -13,9 +13,9 @@ ReactDOM.render(
     <MuiThemeProvider theme={theme}>
       <CssBaseline />
       <BrowserRouter>
-        <Store>
+        <UserAuthProvider>
           <App />
-        </Store>
+        </UserAuthProvider>
       </BrowserRouter>
     </MuiThemeProvider>
   </React.StrictMode>,
