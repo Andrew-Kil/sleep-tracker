@@ -10,11 +10,11 @@ import Profile from "./components/Profile/Profile";
 import Login from "./components/Auth/Login";
 import SignUp from "./components/Auth/Signup";
 import firebase from "./firebase";
-import { UserContext } from "../src/context/Store";
+import { UserAuthContext } from "./context/UserAuthProvider";
 import "./App.css";
 
 const App = () => {
-  const { setUserMeta } = useContext(UserContext);
+  const { setUserMeta } = useContext(UserAuthContext);
 
   useEffect(() => {
     const stopListening = firebase.auth().onAuthStateChanged((user) => {

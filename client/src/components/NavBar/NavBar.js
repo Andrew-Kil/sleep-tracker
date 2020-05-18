@@ -17,7 +17,7 @@ import { NavLink } from "react-router-dom";
 
 import { logout } from "../../utils/firebaseFunctions";
 
-import { UserContext } from "../../context/Store";
+import { UserAuthContext } from "../../context/UserAuthProvider";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -55,7 +55,7 @@ const ScrollTop = (props) => {
 };
 
 const NavBar = (props) => {
-  const { userMeta } = useContext(UserContext);
+  const { userMeta } = useContext(UserAuthContext);
 
   const handleLogout = (logout) => {
     logout();

@@ -21,7 +21,7 @@ import {
 } from "@material-ui/pickers";
 import DateFnsUtils from "@date-io/date-fns";
 
-import { UserContext } from "../../context/Store";
+import { UserAuthContext } from "../../context/UserAuthProvider";
 
 const useStyles = makeStyles((theme) => ({
   layout: {
@@ -39,7 +39,7 @@ const useStyles = makeStyles((theme) => ({
 const Form = () => {
   const history = useHistory();
 
-  const { userMeta } = useContext(UserContext);
+  const { userMeta } = useContext(UserAuthContext);
 
   const [isPrivate, setIsPrivate] = useState(true);
   const [postDate, setPostDate] = useState(new Date());
