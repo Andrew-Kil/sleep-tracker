@@ -1,4 +1,5 @@
 import React, { useState, useContext } from "react";
+import { useHistory } from "react-router-dom";
 import axios from "axios";
 import { makeStyles } from "@material-ui/core/styles";
 import {
@@ -36,6 +37,8 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Form = () => {
+  const history = useHistory();
+
   const { userMeta } = useContext(UserAuthContext);
 
   const [isPrivate, setIsPrivate] = useState(true);
@@ -63,111 +66,132 @@ const Form = () => {
         notes,
       })
       .then(() => alert("Sleep log submitted successfully!"))
-      // use react-router to route user to sleep-logs
+      .then(() => history.push("/sleep-logs"))
       .catch((err) => console.log(err));
   };
 
   return (
-    <main className={classes.layout}>
-      <div
-        style={{
-          border: "2px solid black",
-          borderRadius: "10px",
-          padding: "20px",
-        }}>
-        <Typography variant="h6" gutterBottom>
-          Add Sleep Log
-        </Typography>
-        <Grid container spacing={3}>
-          <MuiPickersUtilsProvider utils={DateFnsUtils}>
+    <div>
+      <Button
+        variant="contained"
+        color="secondary"
+        style={{ marginBottom: "50px" }}
+        onClick={() => history.push("/sleep-logs")}>
+        Go Back
+      </Button>
+      <main className={classes.layout}>
+        <div
+          style={{
+            border: "2px solid black",
+            borderRadius: "10px",
+            padding: "20px",
+            marginBottom: "10%",
+          }}>
+          <Typography variant="h6" gutterBottom>
+            Add Sleep Log
+          </Typography>
+          <Grid container spacing={3}>
+            <MuiPickersUtilsProvider utils={DateFnsUtils}>
+              <Grid item xs={12} sm={12}>
+                <KeyboardDatePicker
+                  margin="normal"
+                  label="Date"
+                  format="MM/dd/yyyy"
+                  value={postDate}
+                  onChange={setPostDate}
+                  KeyboardButtonProps={{ "aria-label": "change date" }}
+                />
+              </Grid>
+              <Grid item xs={12} sm={6}>
+                <KeyboardTimePicker
+                  required
+                  margin="normal"
+                  label="Sleep Start"
+                  value={sleepStart}
+                  onChange={setSleepStart}
+                  emptyLabel
+                />
+              </Grid>
+              <Grid item xs={12} sm={6}>
+                <KeyboardTimePicker
+                  required
+                  margin="normal"
+                  label="Sleep End"
+                  value={sleepEnd}
+                  onChange={setSleepEnd}
+                />
+              </Grid>
+            </MuiPickersUtilsProvider>
             <Grid item xs={12} sm={12}>
-              <KeyboardDatePicker
-                margin="normal"
-                label="Date"
-                format="MM/dd/yyyy"
-                value={postDate}
-                onChange={setPostDate}
-                KeyboardButtonProps={{ "aria-label": "change date" }}
+              <TextField
+                id="notes"
+                name="notes"
+                label="Notes"
+                aria-label="Add notes here"
+                placeholder="Add notes here"
+                multiline
+                rows="5"
+                fullWidth
+                variant="outlined"
+                onChange={(e) => setNotes(e.target.value)}
               />
             </Grid>
             <Grid item xs={12} sm={6}>
-              <KeyboardTimePicker
-                required
-                margin="normal"
-                label="Sleep Start"
-                value={sleepStart}
-                onChange={setSleepStart}
-                emptyLabel
-              />
+              <FormControl component="fieldset">
+                <FormLabel component="legend">Remember dream?</FormLabel>
+                <RadioGroup
+                  aria-label="remember dream"
+                  name="remember dream"
+                  value={rememberDream}
+                  onChange={(e) => setRememberDream(e.target.value)}>
+                  <FormControlLabel
+                    value="yes"
+                    control={<Radio />}
+                    label="Yes"
+                  />
+                  <FormControlLabel value="no" control={<Radio />} label="No" />
+                </RadioGroup>
+              </FormControl>
             </Grid>
             <Grid item xs={12} sm={6}>
-              <KeyboardTimePicker
-                required
-                margin="normal"
-                label="Sleep End"
-                value={sleepEnd}
-                onChange={setSleepEnd}
-              />
+              <FormControl component="fieldset">
+                <FormLabel component="legend">Sleep interrupted?</FormLabel>
+                <RadioGroup
+                  aria-label="sleep interrupted"
+                  name="sleep interrupted"
+                  value={sleepInterrupted}
+                  onChange={(e) => setSleepInterrupted(e.target.value)}>
+                  <FormControlLabel
+                    value="yes"
+                    control={<Radio />}
+                    label="Yes"
+                  />
+                  <FormControlLabel value="no" control={<Radio />} label="No" />
+                </RadioGroup>
+              </FormControl>
             </Grid>
-          </MuiPickersUtilsProvider>
-          <Grid item xs={12} sm={12}>
-            <TextField
-              id="notes"
-              name="notes"
-              label="Notes"
-              aria-label="Add notes here"
-              placeholder="Add notes here"
-              multiline
-              rows="5"
-              fullWidth
-              variant="outlined"
-              onChange={(e) => setNotes(e.target.value)}
-            />
+            <Grid item xs={12} sm={12}>
+              <FormControl component="fieldset">
+                <FormLabel component="legend">Private?</FormLabel>
+                <Checkbox
+                  checked={isPrivate}
+                  onChange={(e) => setIsPrivate(e.target.checked)}
+                  inputProps={{ "aria-label": "primary checkbox" }}
+                />
+              </FormControl>
+            </Grid>
+            <Grid item xs={12} sm={12}>
+              <Button
+                variant="contained"
+                color="primary"
+                onClick={handleSubmit}>
+                Submit
+              </Button>
+            </Grid>
           </Grid>
-          <Grid item xs={12} sm={6}>
-            <FormControl component="fieldset">
-              <FormLabel component="legend">Remember dream?</FormLabel>
-              <RadioGroup
-                aria-label="remember dream"
-                name="remember dream"
-                value={rememberDream}
-                onChange={(e) => setRememberDream(e.target.value)}>
-                <FormControlLabel value="yes" control={<Radio />} label="Yes" />
-                <FormControlLabel value="no" control={<Radio />} label="No" />
-              </RadioGroup>
-            </FormControl>
-          </Grid>
-          <Grid item xs={12} sm={6}>
-            <FormControl component="fieldset">
-              <FormLabel component="legend">Sleep interrupted?</FormLabel>
-              <RadioGroup
-                aria-label="sleep interrupted"
-                name="sleep interrupted"
-                value={sleepInterrupted}
-                onChange={(e) => setSleepInterrupted(e.target.value)}>
-                <FormControlLabel value="yes" control={<Radio />} label="Yes" />
-                <FormControlLabel value="no" control={<Radio />} label="No" />
-              </RadioGroup>
-            </FormControl>
-          </Grid>
-          <Grid item xs={12} sm={12}>
-            <FormControl component="fieldset">
-              <FormLabel component="legend">Private?</FormLabel>
-              <Checkbox
-                checked={isPrivate}
-                onChange={(e) => setIsPrivate(e.target.checked)}
-                inputProps={{ "aria-label": "primary checkbox" }}
-              />
-            </FormControl>
-          </Grid>
-          <Grid item xs={12} sm={12}>
-            <Button variant="contained" color="primary" onClick={handleSubmit}>
-              Submit
-            </Button>
-          </Grid>
-        </Grid>
-      </div>
-    </main>
+        </div>
+      </main>
+    </div>
   );
 };
 
