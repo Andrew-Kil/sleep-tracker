@@ -8,7 +8,7 @@ import SleepLogsForm from "./components/SleepLogs/SleepLogsForm";
 import DisplayDreamThemes from "./components/DreamThemes/DisplayDreamThemes";
 import Profile from "./components/Profile/Profile";
 import Login from "./components/Auth/Login";
-import SignUp from "./components/Auth/Signup";
+import SignUp from "./components/Auth/Signup/Signup";
 import firebase from "./firebase";
 import { UserAuthContext } from "./context/UserAuthProvider";
 import "./App.css";
