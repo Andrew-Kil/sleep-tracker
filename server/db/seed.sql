@@ -13,8 +13,7 @@ CREATE TABLE users
     date_of_birth DATE,
     occupation VARCHAR,
     location VARCHAR,
-    hobbies TEXT,
-    pets TEXT
+    about TEXT
 );
 
 CREATE TABLE dream_themes
@@ -38,9 +37,9 @@ CREATE TABLE sleep_logs
 );
 
 INSERT INTO users
-    (firebase_id, email, first_name, last_name, date_of_birth, occupation, location, hobbies, pets)
+    (firebase_id, email, first_name, last_name, date_of_birth, occupation, location, about)
 VALUES
-    ('Z0SrKJHeG7VqvpAwHG1jUWs866M2', 'rob@rob.com', 'rob', 'pinelli', '2020-05-12', 'cool guy', 'ny', 'aram', 'kittens');
+    ('Z0SrKJHeG7VqvpAwHG1jUWs866M2', 'rob@rob.com', 'rob', 'pinelli', '2020-05-12', 'cool guy', 'ny', 'aram enthusiast');
 
 INSERT INTO dream_themes
     (theme, info)

@@ -2,12 +2,27 @@ const { db } = require("../index");
 
 const createUser = async (req, res, next) => {
   try {
-    const { firebase_id, email } = req.body;
+    const {
+      firebase_id,
+      email,
+      first_name,
+      last_name,
+      date_of_birth,
+      occupation,
+      location,
+      about,
+    } = req.body;
     await db.one(
-      "INSERT INTO users (firebase_id, email) VALUES (${firebase_id}, ${email}) RETURNING *",
+      "INSERT INTO users (firebase_id, email, first_name, last_name, date_of_birth, occupation, location, about) VALUES (${firebase_id}, ${email}, ${first_name}, ${last_name}, ${date_of_birth}, ${occupation}, ${location}, ${about}) RETURNING *",
       {
         firebase_id,
         email,
+        first_name,
+        last_name,
+        date_of_birth,
+        occupation,
+        location,
+        about,
       }
     );
     res.json({
@@ -20,7 +35,6 @@ const createUser = async (req, res, next) => {
 
 const updateUser = async (req, res, next) => {
   try {
-    console.log(req.body);
     const keys = Object.keys(req.body);
     const queryString = keys
       .reduce((acc, curr) => {

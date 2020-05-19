@@ -1,18 +1,16 @@
-import React, { useState } from "react";
-import axios from "axios";
-import { useHistory } from "react-router-dom";
-import { signUp } from "../../utils/firebaseFunctions";
-import Copyright from "./Copyright";
-import Avatar from "@material-ui/core/Avatar";
-import Button from "@material-ui/core/Button";
-import TextField from "@material-ui/core/TextField";
-import Link from "@material-ui/core/Link";
-import Grid from "@material-ui/core/Grid";
-import Box from "@material-ui/core/Box";
+import React from "react";
+
+import {
+  Avatar,
+  Button,
+  TextField,
+  Link,
+  Grid,
+  Typography,
+  Container,
+  makeStyles,
+} from "@material-ui/core";
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
-import Typography from "@material-ui/core/Typography";
-import { makeStyles } from "@material-ui/core/styles";
-import Container from "@material-ui/core/Container";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -34,25 +32,19 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const SignUp = () => {
+const UserDetails = ({
+  form: { email, password },
+  incrementStep,
+  handleField,
+}) => {
   const classes = useStyles();
 
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const history = useHistory();
-
-  const handleSubmit = async (e) => {
+  const nextStep = (e) => {
     e.preventDefault();
-    try {
-      const res = await signUp(email, password);
-      await axios.post("http://localhost:5000/users/new", {
-        firebase_id: res.user.uid,
-        email,
-      });
-      history.push("/");
-    } catch (err) {
-      console.log("ERROR ", err);
-      alert(err);
+    if (email === "" || password === "") {
+      alert("Please enter an email address and password");
+    } else {
+      incrementStep();
     }
   };
 
@@ -62,10 +54,13 @@ const SignUp = () => {
         <Avatar className={classes.avatar}>
           <LockOutlinedIcon />
         </Avatar>
-        <Typography component="h1" variant="h5">
+        <Typography component="h5" variant="h5">
           Sign up
         </Typography>
-        <form className={classes.form} noValidate onSubmit={handleSubmit}>
+        <Typography component="p" variant="p">
+          User Details
+        </Typography>
+        <form className={classes.form} noValidate onSubmit={(e) => nextStep(e)}>
           <Grid container spacing={2}>
             <Grid item xs={12}>
               <TextField
@@ -77,7 +72,7 @@ const SignUp = () => {
                 name="email"
                 autoComplete="email"
                 value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                onChange={(e) => handleField(e)}
               />
             </Grid>
             <Grid item xs={12}>
@@ -91,7 +86,7 @@ const SignUp = () => {
                 id="password"
                 autoComplete="current-password"
                 value={password}
-                onChange={(e) => setPassword(e.target.value)}
+                onChange={(e) => handleField(e)}
               />
             </Grid>
           </Grid>
@@ -101,7 +96,7 @@ const SignUp = () => {
             variant="contained"
             color="primary"
             className={classes.submit}>
-            Sign Up
+            Next
           </Button>
           <Grid container justify="center">
             <Grid item>
@@ -112,11 +107,8 @@ const SignUp = () => {
           </Grid>
         </form>
       </div>
-      <Box mt={5}>
-        <Copyright />
-      </Box>
     </Container>
   );
 };
 
-export default SignUp;
+export default UserDetails;
