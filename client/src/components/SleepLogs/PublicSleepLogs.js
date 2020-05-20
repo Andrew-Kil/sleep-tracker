@@ -73,21 +73,27 @@ const PublicSleepLogs = () => {
                       {publicSleepLog.post_date.slice(0, 10)}
                     </Typography>
                     <Typography component="p">
-                      remember dream:{" "}
+                      First Name: {publicSleepLog.first_name}
+                    </Typography>
+                    <Typography component="p">
+                      Last Name: {publicSleepLog.last_name}
+                    </Typography>
+                    <Typography component="p">
+                      Remember Dream:{" "}
                       {publicSleepLog.remember_dream ? "true" : "false"}
                     </Typography>
                     <Typography component="p">
-                      interrupted sleep:{" "}
+                      Interrupted Sleep:{" "}
                       {publicSleepLog.interrupted_sleep ? "true" : "false"}
                     </Typography>
                     <Typography component="p">
-                      sleep start: {publicSleepLog.sleep_start}
+                      Sleep Start: {publicSleepLog.sleep_start}
                     </Typography>
                     <Typography component="p">
-                      sleep end:{publicSleepLog.sleep_end}
+                      Sleep End:{publicSleepLog.sleep_end}
                     </Typography>
                     <Typography component="p">
-                      notes: {publicSleepLog.notes}
+                      Notes: {publicSleepLog.notes}
                     </Typography>
                   </Paper>
                 </Grid>
