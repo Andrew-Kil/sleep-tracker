@@ -38,7 +38,7 @@ const DisplaySleepLogs = () => {
   return (
     <>
       <h2>Dream Themes</h2>
-      <Grid container alignItems="center" justify="center" spacing={24}>
+      <Grid container alignItems="center" justify="center" spacing={10}>
         {isLoading ? (
           <div>Loading ...</div>
         ) : (
