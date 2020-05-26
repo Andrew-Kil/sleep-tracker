@@ -13,7 +13,7 @@ import {
 import { makeStyles } from "@material-ui/core/styles";
 import KeyboardArrowUpIcon from "@material-ui/icons/KeyboardArrowUp";
 
-import { NavLink } from "react-router-dom";
+import { NavLink, useHistory } from "react-router-dom";
 
 import { logout } from "../../utils/firebaseFunctions";
 
@@ -57,9 +57,11 @@ const ScrollTop = (props) => {
 const NavBar = (props) => {
   const { userMeta } = useContext(UserAuthContext);
 
+  const history = useHistory();
+
   const handleLogout = (logout) => {
     logout();
-    window.location.reload(true);
+    history.push("/");
   };
 
   const renderNavLinks = () => {
