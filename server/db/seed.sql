@@ -8,6 +8,7 @@ CREATE TABLE users
     id SERIAL PRIMARY KEY,
     firebase_id VARCHAR UNIQUE NOT NULL,
     email VARCHAR UNIQUE NOT NULL,
+    username VARCHAR UNIQUE NOT NULL,
     first_name VARCHAR,
     last_name VARCHAR,
     date_of_birth DATE,
@@ -37,9 +38,9 @@ CREATE TABLE sleep_logs
 );
 
 INSERT INTO users
-    (firebase_id, email, first_name, last_name, date_of_birth, occupation, location, about)
+    (firebase_id, email, username, first_name, last_name, date_of_birth, occupation, location, about)
 VALUES
-    ('Z0SrKJHeG7VqvpAwHG1jUWs866M2', 'rob@rob.com', 'rob', 'pinelli', '2020-05-12', 'cool guy', 'ny', 'aram enthusiast');
+    ('Z0SrKJHeG7VqvpAwHG1jUWs866M2', 'rob@rob.com', 'aramfan123', 'rob', 'pinelli', '2020-05-12', 'cool guy', 'ny', 'aram enthusiast');
 
 INSERT INTO dream_themes
     (theme, info)

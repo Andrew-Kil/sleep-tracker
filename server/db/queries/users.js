@@ -5,6 +5,7 @@ const createUser = async (req, res, next) => {
     const {
       firebase_id,
       email,
+      username,
       first_name,
       last_name,
       date_of_birth,
@@ -13,10 +14,11 @@ const createUser = async (req, res, next) => {
       about,
     } = req.body;
     await db.one(
-      "INSERT INTO users (firebase_id, email, first_name, last_name, date_of_birth, occupation, location, about) VALUES (${firebase_id}, ${email}, ${first_name}, ${last_name}, ${date_of_birth}, ${occupation}, ${location}, ${about}) RETURNING *",
+      "INSERT INTO users (firebase_id, email, username, first_name, last_name, date_of_birth, occupation, location, about) VALUES (${firebase_id}, ${email}, ${username}, ${first_name}, ${last_name}, ${date_of_birth}, ${occupation}, ${location}, ${about}) RETURNING *",
       {
         firebase_id,
         email,
+        username,
         first_name,
         last_name,
         date_of_birth,

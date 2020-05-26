@@ -7,6 +7,8 @@ import { Grid, Button } from "@material-ui/core";
 import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
 
+import { convertISODate } from "../../utils/helpers";
+
 const useStyles = makeStyles((theme) => ({
   root: {
     padding: theme.spacing(3, 2),
@@ -14,20 +16,10 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const PublicSleepLogs = () => {
+  const classes = useStyles();
   const history = useHistory();
-
   const [publicSleepLogs, setPublicSleepLogs] = useState();
   const [isLoading, setIsLoading] = useState(false);
-
-  const classes = useStyles();
-
-  const convertISODate = (postDate) => {
-    const date = postDate.substring(0, 10);
-    const month = date.split("-")[1];
-    const day = date.split("-")[2];
-    const year = date.split("-")[0];
-    return `${month}-${day}-${year}`;
-  };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -77,10 +69,13 @@ const PublicSleepLogs = () => {
                       {publicSleepLog.post_date.slice(0, 10)}
                     </Typography>
                     <Typography component="p">
-                      First Name:{" "}
+                      Username:{" "}
                       <NavLink to={`/profile/${publicSleepLog.firebase_id}`}>
-                        {publicSleepLog.first_name}
+                        {publicSleepLog.username}
                       </NavLink>
+                    </Typography>
+                    <Typography component="p">
+                      First Name: {publicSleepLog.first_name}
                     </Typography>
                     <Typography component="p">
                       Last Name: {publicSleepLog.last_name}

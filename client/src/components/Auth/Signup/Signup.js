@@ -18,6 +18,7 @@ const SignUp = () => {
   const [form, setForm] = useState({
     email: "",
     password: "",
+    username: "",
     firstName: "",
     lastName: "",
     dateOfBirth: "",
@@ -42,6 +43,7 @@ const SignUp = () => {
     const {
       email,
       password,
+      username,
       firstName,
       lastName,
       dateOfBirth,
@@ -54,6 +56,7 @@ const SignUp = () => {
       await axios.post("http://localhost:5000/users/new", {
         firebase_id: res.user.uid,
         email,
+        username,
         first_name: firstName,
         last_name: lastName,
         date_of_birth: dateOfBirth,
