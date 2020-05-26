@@ -7,7 +7,7 @@ import { Grid, Button } from "@material-ui/core";
 import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
 
-import { convertISODate } from "../../utils/helpers";
+import { convertISODate, convertTime } from "../../utils/helpers";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -89,10 +89,10 @@ const PublicSleepLogs = () => {
                       {publicSleepLog.interrupted_sleep ? "true" : "false"}
                     </Typography>
                     <Typography component="p">
-                      Sleep Start: {publicSleepLog.sleep_start}
+                      Sleep Start: {convertTime(publicSleepLog.sleep_start)}
                     </Typography>
                     <Typography component="p">
-                      Sleep End:{publicSleepLog.sleep_end}
+                      Sleep End: {convertTime(publicSleepLog.sleep_end)}
                     </Typography>
                     <Typography component="p">
                       Notes: {publicSleepLog.notes}
