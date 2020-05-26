@@ -33,7 +33,15 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const PersonalDetails = ({
-  form: { firstName, lastName, dateOfBirth, occupation, location, about },
+  form: {
+    username,
+    firstName,
+    lastName,
+    dateOfBirth,
+    occupation,
+    location,
+    about,
+  },
   decrementStep,
   incrementStep,
   handleField,
@@ -64,6 +72,18 @@ const PersonalDetails = ({
         </Typography>
         <form className={classes.form} noValidate>
           <Grid container spacing={2}>
+            <Grid item xs={12}>
+              <TextField
+                variant="outlined"
+                required
+                fullWidth
+                id="username"
+                label="Username"
+                name="username"
+                value={username}
+                onChange={(e) => handleField(e)}
+              />
+            </Grid>
             <Grid item xs={12}>
               <TextField
                 variant="outlined"
