@@ -97,7 +97,7 @@ const NavBar = (props) => {
           <Grid item xs>
             <Button>
               <NavLink
-                to="/profile"
+                to="/profile/me"
                 style={{
                   textDecoration: "none",
                   color: "white",

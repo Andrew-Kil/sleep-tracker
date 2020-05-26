@@ -46,7 +46,8 @@ const App = () => {
           exact
           path="/dream-themes"
           component={DisplayDreamThemes}></Route>
-        <Route exact path="/profile" component={Profile}></Route>
+        <Route exact path="/profile/me" component={Profile}></Route>
+        <Route path="/profile/:id" component={Profile}></Route>
         <Route exact path="/auth/login" component={Login}></Route>
         <Route exact path="/auth/signup" component={SignUp}></Route>
       </Switch>

@@ -5,13 +5,14 @@ import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import Card from "@material-ui/core/Card";
 import CardActionArea from "@material-ui/core/CardActionArea";
-import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
-import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
-import EditIcon from "@material-ui/icons/Edit";
+// import CardActions from "@material-ui/core/CardActions";
+// import Button from "@material-ui/core/Button";
+// import EditIcon from "@material-ui/icons/Edit";
 
 import { UserAuthContext } from "../../context/UserAuthProvider";
+import { convertISODate } from "../../utils/helpers";
 
 const useStyles = makeStyles({
   root: {
@@ -19,30 +20,35 @@ const useStyles = makeStyles({
   },
 });
 
-const Profile = () => {
+const Profile = ({ match }) => {
   const classes = useStyles();
-
   const { userMeta } = useContext(UserAuthContext);
-
   const userID = userMeta && userMeta.uid;
-
   const [profileInfo, setProfileInfo] = useState();
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
       setIsLoading(true);
-      const result = await axios(
-        `http://localhost:5000/users/profile/${userID}`
-      );
-      setProfileInfo(result.data.data[0]);
-
-      setIsLoading(false);
+      if (userID) {
+        const result = await axios(
+          `http://localhost:5000/users/profile/${userID}`
+        );
+        setProfileInfo(result.data.data[0]);
+        setIsLoading(false);
+      }
+      if (match.params.id) {
+        const result = await axios(
+          `http://localhost:5000/users/profile/${match.params.id}`
+        );
+        setProfileInfo(result.data.data[0]);
+        setIsLoading(false);
+      }
     };
-    if (userID) {
+    if (userID || match.params.id) {
       fetchData();
     }
-  }, [userID]);
+  }, [userID, match.params.id]);
 
   return (
     <>
@@ -90,7 +96,7 @@ const Profile = () => {
                       color="textSecondary"
                       component="p">
                       <b>Date of Birth: </b>
-                      {profileInfo.date_of_birth.slice(0, 10)}
+                      {convertISODate(profileInfo.date_of_birth)}
                     </Typography>
                     <Typography
                       variant="body2"
@@ -108,11 +114,11 @@ const Profile = () => {
                     </Typography>
                   </CardContent>
                 </CardActionArea>
-                <CardActions>
+                {/* <CardActions>
                   <Button size="small" color="primary">
                     <EditIcon></EditIcon>
                   </Button>
-                </CardActions>
+                </CardActions> */}
               </Card>
             </Grid>
           </Grid>
