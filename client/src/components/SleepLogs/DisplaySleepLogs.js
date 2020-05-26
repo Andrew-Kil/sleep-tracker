@@ -55,7 +55,7 @@ const DisplaySleepLogs = () => {
 
   return (
     <div>
-      <h2>Sleep Logs</h2>
+      <h2>Your Sleep Logs</h2>
       {isLoading ? (
         <div>Loading ...</div>
       ) : (
@@ -75,26 +75,30 @@ const DisplaySleepLogs = () => {
                 alignItems="center"
                 justify="center">
                 <Grid item xs={6} style={{ minWidth: "75vw", margin: "25px" }}>
-                  <Paper elevation={3} className={classes.root} key={i}>
-                    <Typography variant="h5" component="h3">
-                      {sleepLog.post_date.slice(0, 10)}
+                  <Paper
+                    elevation={3}
+                    className={classes.root}
+                    key={i}
+                    style={{ justifyContent: "left" }}>
+                    <Typography variant="h5" component="h5">
+                      {convertISODate(sleepLog.post_date)}
                     </Typography>
                     <Typography component="p">
-                      remember dream:{" "}
+                      Remember dream:{" "}
                       {sleepLog.remember_dream ? "true" : "false"}
                     </Typography>
                     <Typography component="p">
-                      interrupted sleep:{" "}
+                      Sleep interrupted:{" "}
                       {sleepLog.interrupted_sleep ? "true" : "false"}
                     </Typography>
                     <Typography component="p">
-                      sleep start: {sleepLog.sleep_start}
+                      Sleep start: {sleepLog.sleep_start}
                     </Typography>
                     <Typography component="p">
-                      sleep end:{sleepLog.sleep_end}
+                      Sleep end:{sleepLog.sleep_end}
                     </Typography>
                     <Typography component="p">
-                      notes: {sleepLog.notes}
+                      Notes: {sleepLog.notes}
                     </Typography>
                     <IconButton
                       aria-label="delete"
