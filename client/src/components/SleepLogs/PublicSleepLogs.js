@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { useHistory } from "react-router-dom";
+import { useHistory, NavLink } from "react-router-dom";
 
 import { makeStyles } from "@material-ui/core/styles";
 import { Grid, Button } from "@material-ui/core";
@@ -68,12 +68,19 @@ const PublicSleepLogs = () => {
                 alignItems="center"
                 justify="center">
                 <Grid item xs={6} style={{ minWidth: "75vw", margin: "25px" }}>
-                  <Paper elevation={3} className={classes.root} key={i}>
+                  <Paper
+                    elevation={3}
+                    className={classes.root}
+                    key={i}
+                    align="left">
                     <Typography variant="h5" component="h3">
                       {publicSleepLog.post_date.slice(0, 10)}
                     </Typography>
                     <Typography component="p">
-                      First Name: {publicSleepLog.first_name}
+                      First Name:{" "}
+                      <NavLink to={`/profile/${publicSleepLog.firebase_id}`}>
+                        {publicSleepLog.first_name}
+                      </NavLink>
                     </Typography>
                     <Typography component="p">
                       Last Name: {publicSleepLog.last_name}
