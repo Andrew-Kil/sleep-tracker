@@ -101,12 +101,7 @@ const Login = () => {
             className={classes.submit}>
             Log In
           </Button>
-          <Grid container>
-            <Grid item xs>
-              <Link href="#" variant="body2">
-                Forgot password?
-              </Link>
-            </Grid>
+          <Grid container justify="center">
             <Grid item>
               <Link href="/auth/signup" variant="body2">
                 {"Don't have an account? Sign Up"}
