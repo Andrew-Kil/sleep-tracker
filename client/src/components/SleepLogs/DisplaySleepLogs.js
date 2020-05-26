@@ -9,7 +9,7 @@ import IconButton from "@material-ui/core/IconButton";
 import DeleteIcon from "@material-ui/icons/Delete";
 
 import { UserAuthContext } from "../../context/UserAuthProvider";
-import { convertISODate } from "../../utils/helpers";
+import { convertISODate, convertTime } from "../../utils/helpers";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -86,10 +86,10 @@ const DisplaySleepLogs = () => {
                       {sleepLog.interrupted_sleep ? "true" : "false"}
                     </Typography>
                     <Typography component="p">
-                      Sleep start: {sleepLog.sleep_start}
+                      Sleep start: {convertTime(sleepLog.sleep_start)}
                     </Typography>
                     <Typography component="p">
-                      Sleep end:{sleepLog.sleep_end}
+                      Sleep end:{convertTime(sleepLog.sleep_end)}
                     </Typography>
                     <Typography component="p">
                       Notes: {sleepLog.notes}
