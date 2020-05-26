@@ -9,6 +9,7 @@ import IconButton from "@material-ui/core/IconButton";
 import DeleteIcon from "@material-ui/icons/Delete";
 
 import { UserAuthContext } from "../../context/UserAuthProvider";
+import { convertISODate } from "../../utils/helpers";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -25,14 +26,6 @@ const DisplaySleepLogs = () => {
   const [isLoading, setIsLoading] = useState(false);
 
   const classes = useStyles();
-
-  const convertISODate = (postDate) => {
-    const date = postDate.substring(0, 10);
-    const month = date.split("-")[1];
-    const day = date.split("-")[2];
-    const year = date.split("-")[0];
-    return `${month}-${day}-${year}`;
-  };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -79,6 +72,7 @@ const DisplaySleepLogs = () => {
                     elevation={3}
                     className={classes.root}
                     key={i}
+                    align="left"
                     style={{ justifyContent: "left" }}>
                     <Typography variant="h5" component="h5">
                       {convertISODate(sleepLog.post_date)}
